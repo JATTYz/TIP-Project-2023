@@ -1,8 +1,10 @@
 ---
 import Test from '../components/Test';
+import TestFetch from '../components/TestFetch';
 import Layout from '../layouts/Layout.astro';
 
 const greeting: String = "Hello World";
+
 
 ---
 
@@ -12,6 +14,7 @@ const greeting: String = "Hello World";
 		<h1>{greeting}</h1>
 		<h1>Welcome to TIP - 2023</h1>
 		<Test client:load/>
+		<TestFetch client:load/>
 		</div>
 	</div>
 </Layout>
