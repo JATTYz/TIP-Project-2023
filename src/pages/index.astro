@@ -1,14 +1,15 @@
 ---
+import Header from '../components/Header.astro';
 import Test from '../components/Test';
 import TestFetch from '../components/TestFetch';
 import Layout from '../layouts/Layout.astro';
 
 const greeting: String = "Hello World";
 
-
 ---
 
 <Layout title="Welcome to Astro.">
+	<Header />
 	<div>
 		<div class="px-10 text-3xl">
 		<h1>{greeting}</h1>
