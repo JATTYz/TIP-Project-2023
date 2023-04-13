@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Upload from '../components/Upload';
+import  { storage } from "../firebase/firebaseConfig";
+import {  ref } from "firebase/storage";
+import Test from '../components/Test';
+
+
+
+---
+
+<Layout title="Welcome to Astro.">
+	<Header />
+	<div>
+		<div class="px-10 text-3xl">
+		<h1>Welcome to TIP - 2023</h1>
+		</div>
+        <Upload client:load/>
+	</div>
+</Layout>
