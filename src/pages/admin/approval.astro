@@ -1,75 +1,25 @@
 ---
 import AdminHeader from "../../components/AdminHeader";
-import StickyHeadTable from "../../components/Test";
-import ApprovalTable from "../../components/ApprovalTable";
+import Sidebar from "../../components/Sidebar";
 import Layout from "../../layouts/Layout.astro";
 
 
 ---
 <Layout title="Aproval Document">
     <AdminHeader />
-
-    <div class="text-center text-4xl py-3">
+    <!-- <div class=" bg-gray-200 h-screen"> -->
+    <!-- <div class="text-center text-4xl py-3">
         <h1>Document Approval</h1>
-    </div>
+    </div> -->
+    <!-- <div class="grid grid-cols-2">
+        <div>
+        <Sidebar client:load/>
+        </div>
+        <div>
+        </div>
+    </div> -->
+    <Sidebar client:load/>
 
-	<!-- <StickyHeadTable client:load/> -->
-    <ApprovalTable client:load/>
-    <div class="text-center flex justify-center">
-      
-    </div>
+    <!-- </div> -->
 </Layout>
 
-  <!-- <table class="table-auto  border-2 rounded-lg border-slate-500">
-        <thead>
-            <tr>
-            <th class="border border-slate-600">Type</th>
-            <th class="border border-slate-600">Title</th>
-            <th class="border border-slate-600">Subject</th>
-            <th class="border border-slate-600">Source</th>
-            <th class="border border-slate-600">Rights</th>
-            <th class="border border-slate-600">Relation</th>
-            <th class="border border-slate-600">Publisher</th>
-            <th class="border border-slate-600">Language</th>
-            <th class="border border-slate-600">Identifier</th>
-            <th class="border border-slate-600">Format</th>
-            <th class="border border-slate-600">Description</th>
-            <th class="border border-slate-600">Date</th>
-            <th class="border border-slate-600">Creator</th>
-            <th class="border border-slate-600">Coverage</th>
-            <th class="border border-slate-600">Contributor</th>
-            <th class="border border-slate-600">More details</th>
-            <th class="border border-slate-600">Aproval</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td class="border-2 border-green-700">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-            <td>Malcolm Lockyer</td>
-            <td>1961</td>
-            <td>1961</td>
-            <td>1961</td>
-            <td>1961</td>
-            <td>1961</td>
-            <td>1961</td>
-            <td></td>
-            <td><button>YES</button> <button>NO</button></td>
-
-            </tr>
-            <tr>
-            <td>Witchy Woman</td>
-            <td>The Eagles</td>
-            <td>1972</td>
-            <td>1961</td>
-            <td>1961</td>
-            <td>1961</td>
-            <td>1961</td>
-            <td>1961</td>
-            </tr>
-            <tr>
-            <td>Shining Star</td>
-            <td>Earth, Wind, and Fire</td>
-            <td>1975</td>
-            </tr>
-        </tbody>
-        </table> -->
