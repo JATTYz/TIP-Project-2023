@@ -1,10 +1,8 @@
 ---
 import Header from '../components/Header.jsx';
-import Test from '../components/Test';
-import TestFetch from '../components/TestFetch';
 import Layout from '../layouts/Layout.astro';
 
-const greeting: String = "Hello World";
+const greeting: String = "Contact Us Page";
 
 ---
 
@@ -13,11 +11,6 @@ const greeting: String = "Hello World";
 	<div>
 		<div class="px-10 text-3xl">
 		<h1>{greeting}</h1>
-		<h1>Welcome to TIP - 2023</h1>
-		<Test client:load/>
-		<TestFetch client:load/>
 		</div>
 	</div>
 </Layout>
-
-
