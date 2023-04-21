@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase/firebaseConfig'
 import { collection, getDocs } from 'firebase/firestore'
-import { Button } from '@mui/material';
 import Sidebar from './Sidebar';
 
 const ApprovalTable = () => {
