@@ -21,7 +21,7 @@ const ApprovalTable = () => {
         setTitle((prev) => [...prev, doc.data().title])
         setDescription((prev) => [...prev, doc.data().description])
         setDate((prev) => [...prev, doc.data().date])
-       
+      
     })
     setIsLoading(false)
     }
@@ -134,10 +134,11 @@ const ApprovalTable = () => {
     </>)
 
 }
-    
+   
 
 </div>
   )
 }
 
 export default ApprovalTable
+
