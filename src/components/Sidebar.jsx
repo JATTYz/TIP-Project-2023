@@ -64,7 +64,7 @@ const Sidebar = () => {
       </div>
       <div className="min-h-screen flex-1 p-7  bg-gray-200">
         <h1 className="text-2xl font-extrabold ">Document Approval</h1>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-center my-6">
+        {/* <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-center my-6">
             <div className="p-5 bg-white rounded-lg  dark:bg-amber-800 w-48  shadow-lg shadow-amber-950">
               <div className="flex">
                 <img src="../../public/pending.png" className="w-14  h-12 mr-4" />
@@ -94,7 +94,7 @@ const Sidebar = () => {
                     <div className="text-2xl font-bold  text-gray-100 pt-4">22/04/2023</div>
                 </div>
             </div>
-        </div>
+        </div> */}
         <div className="grid grid-cols-1">
             <div>
             <ApprovalTable /> 
