@@ -1,10 +1,11 @@
 import { useState } from "react";
 import ApprovalTable from "./ApprovalTable";
 import DoughnutChart from "./DoughnutChart";
-import PolarChart from "./PolarChart";
-import { Radar } from "react-chartjs-2";
 import RadarChart from "./RadarChart";
 import BubbleChart from "./BubbleChart";
+
+
+
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const Menus = [
@@ -66,9 +67,7 @@ const Sidebar = () => {
         <h1 className="text-2xl font-extrabold ">Document Approval</h1>
 
         <div className="grid grid-cols-1">
-            <div>
-            <ApprovalTable /> 
-            </div>
+            <ApprovalTable key="ASBC"/> 
         </div>
         <div className="mt-20">
           <h1 className="text-2xl font-extrabold">Analytics</h1>

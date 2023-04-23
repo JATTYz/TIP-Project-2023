@@ -6,10 +6,10 @@ const Test = () => {
 
 const testUploadData = async () => {
 
-    let newDate = new Date()
-    let date = newDate.getDate();
-    let month = newDate.getMonth();
-    let year = newDate.getFullYear();
+
+    const current = new Date();
+    const dateNow = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
     const docRef = await addDoc(collection(db,"raac-collection"), {
         type: "AdvertisementJournal",
         title: "A name given to the resource",
@@ -22,15 +22,15 @@ const testUploadData = async () => {
         identifier: "Identifier",
         format: "Physical Medium",
         description: "Description!",
-        date: date + month + year,
+        date: dateNow,
         creator: "JT",
         coverage: "coverage",
         contribution: "contribution",
         isApprove: false,
+        isReject: false,
         
     });
 
-    console.log("GOOD");
   }
 
   return (
