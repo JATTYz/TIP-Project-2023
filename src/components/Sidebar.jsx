@@ -64,6 +64,7 @@ const Sidebar = () => {
       </div>
       <div className="min-h-screen flex-1 p-7  bg-gray-200">
         <h1 className="text-2xl font-extrabold ">Document Approval</h1>
+
         <div className="grid grid-cols-1">
             <div>
             <ApprovalTable /> 
