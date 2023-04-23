@@ -1,38 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
-import { db } from '../firebase/firebaseConfig'
-import { collection, doc, getDocs, getDoc, updateDoc, addDoc } from 'firebase/firestore'
 import Test from '../components/Test';
 
-
-
-const testUploadData = async () => {
-
-    let newDate = new Date()
-    let date = newDate.getDate();
-    let month = newDate.getMonth();
-    let year = newDate.getFullYear();
-    const docRef = await addDoc(collection(db,"raac-collection"), {
-        type: "AdvertisementJournal",
-        title: "A name given to the resource",
-        subject: "The topic of the resource",
-        source: "Test Source",
-        right: "TEST.co",
-        relation: "relation",
-        publisher: "ABC",
-        language: "En",
-        identifier: "Identifier",
-        format: "Physical Medium",
-        description: "Description!",
-        date: date + month + year,
-        creator: "JT",
-        coverate: "coverage",
-        contribution: "contribution"
-    });
-
-
-}
 ---
 
     <div class='bg-[#1C0A00] text-2xl w-full h-16 flex px-10 justify-between'>
@@ -42,5 +11,6 @@ const testUploadData = async () => {
 	<div>
         <Header />
         <Test client:load />
+        <!-- <DialogTest client:load/> -->
 	</div>
    

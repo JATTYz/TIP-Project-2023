@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase/firebaseConfig'
-import { collection, doc, getDocs, getDoc, updateDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, getDoc, where, query } from 'firebase/firestore'
+import DialogButton from './DialogButton';
+import AlertText from './AlertText';
 
 const ApprovalTable = () => {
 
@@ -12,14 +14,20 @@ const ApprovalTable = () => {
     const [description, setDescription] = useState([]);
     const [date, setDate] = useState([]);
     const [isOpen, setIsOpen] = useState(true);   
-
-    const [isAlertApprove, setIsAlertApprove] = useState(true)
+    const [isAlertApprove, setIsAlertApprove] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
 
     async function getTest(){
-    const docRef = await getDocs(collection(db, "raac-collection"))
+    const q = query(collection(db, "raac-collection"), where("isReject", "==", false));
+    const docRef = await getDocs(q);
+    setId([]);
+    setType([]);
+    setTitle([]);
+    setDescription([]);
+    setDate([]);
+
     docRef.forEach((doc) => {
         setId((prev) => [...prev, doc.id])
         setType((prev) => [...prev, doc.data().type])
@@ -27,28 +35,12 @@ const ApprovalTable = () => {
         setDescription((prev) => [...prev, doc.data().description])
         setDate((prev) => [...prev, doc.data().date])
     })
+
     setIsLoading(false)
     }
 
     getTest()
-    }, [])
-
-    const approveDoc = async (docId) => {
-      const docRef = doc(db, "raac-collection", docId);
-      await updateDoc(docRef, {isApprove: true}).then(
-
-      setCurrentId(docId)
-      )
-      setIsAlertApprove(false)
-    }
-
-    const rejectDoc = async (docId) => {
-      const docRef = doc(db, "raac-collection", docId);
-      await updateDoc(docRef, {isApprove: false}).then(
-        alert("SUCCESSFULLY REJECTED DOCUMENT")
-      )  
-    }
-
+    }, [isAlertApprove])
 
     const [popTitleDoc, setPopTitleDoc ] = useState();
     const [popTypeDoc, setPopTypeDoc] = useState();
@@ -112,40 +104,13 @@ const ApprovalTable = () => {
       {title: "Contribution", value: popContributionDoc},
     ]
 
-    const approveDocFromPop = async (docId) => {
-      const docRef = doc(db, "raac-collection", docId);
-      await updateDoc(docRef, {isApprove: true}).then(
-        setIsAlertApprove(false)
-      )  
-      setIsOpen(true)
-      window.scrollTo({ top: 0});
-    }
+    const handleClosePopup = (child) => {
+      setIsOpen(child)
+      console.log(child);
+    } 
 
-    const rejectDocFromPop = async (docId) => {
-      const docRef = doc(db, "raac-collection", docId);
-      await updateDoc(docRef, {isApprove: false}).then(
-        alert("SUCCESSFULLY REJECTED DOCUMENT")
-      )  
-    }
-
-
-    const alertText = () => {
-      return (
-        <div id="alert-border-3" className={`${isAlertApprove && "hidden"} rounded-lg flex p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800`} role="alert">
-        <svg className="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-        <div className="ml-3 text-sm font-medium">
-            You have successfully approved the document with id: {currentID}
-        </div>
-          <button 
-          onClick={() => setIsAlertApprove(true)}
-          type="button" 
-          className="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">
-            <span className="sr-only">Dismiss</span>
-            <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-          </button>
-      </div>
-      )
-
+    const handleDialogAlert = (child) => {
+      setIsAlertApprove(child)
     }
 
   return (
@@ -156,7 +121,9 @@ const ApprovalTable = () => {
             <h1 className='absolute top-1/3 left-1/2 mt-10 -ml-6 font-bold text-2xl'>Loading...</h1>
         </div>
         ): (<>
-          {alertText()} 
+          {
+            isAlertApprove ?  <AlertText isApproveAction={setIsAlertApprove}/> : null
+          }
          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-center my-6">
             <div className="p-5 bg-white rounded-lg  dark:bg-amber-800 w-48  shadow-lg shadow-amber-950">
               <div className="flex">
@@ -214,14 +181,13 @@ const ApprovalTable = () => {
 
          <div className='flex justify-center'>
           <div>
-          <button 
-          onClick={()=> approveDocFromPop(currentID)} 
-          className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-bold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Approve</button>
+          <DialogButton buttonType="approve" id={currentID} onClose={handleClosePopup} onAlert={handleDialogAlert}/>
+          {/* <DialogButton buttonType="approve" id={currentID} onAlert={() => handleDialogAlert()}/> */}
           </div>
           <div>
-          <button  
-          onClick={()=> rejectDocFromPop(currentID)} 
-          className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-bold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Reject</button>
+
+          <DialogButton buttonType="reject" id={currentID} onClose={handleClosePopup} onAlert={handleDialogAlert}/>
+          {/* <DialogButton buttonType="reject" id={currentID} onAlert={() => handleDialogAlert()}/> */}
           </div>
          </div>
         </div>
@@ -246,6 +212,7 @@ const ApprovalTable = () => {
           <tbody>
            {id.map((docId,index)=>(
               <tr
+              key={index}
               className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-300">
 
               <td className="whitespace-nowrap px-6 py-4 font-medium">{index + 1}</td>
@@ -261,19 +228,13 @@ const ApprovalTable = () => {
                 </button>
               </td>
               <td className="whitespace-nowrap px-6 py-4">
-                <button 
-                onClick={ () => approveDoc(docId)}
-                className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded mr-3">
-                Approve
-                </button>
-                <button 
-                onClick={ () => rejectDoc(docId)}
-                className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded mr-3">
-                Reject
-                </button>
-                <button className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded">
+                <div className='flex'>
+                <DialogButton id={docId} buttonType="approve"  onAlert={handleDialogAlert} onClose={handleClosePopup}/>
+                <DialogButton id={docId} buttonType="reject"   onAlert={handleDialogAlert} onClose={handleClosePopup}/>
+                </div>
+                {/* <button className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded">
                 Need More Info
-                </button>
+                </button> */}
               </td>
             </tr>
             ))} 
