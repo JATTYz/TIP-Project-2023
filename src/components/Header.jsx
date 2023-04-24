@@ -1,25 +1,38 @@
 import React, { useState } from 'react'
-
+import DropDownProfile from './DropDownProfile'
+import { BsPersonBadge } from 'react-icons/bs'
 
 const Header = () => {
 
-  return (
-<div>  
-  <div class='bg-[#1C0A00] text-2xl w-full h-16 flex px-10 justify-between'>
-    <h1 class='text-white flex items-center'>Rover Car Club Of Australia</h1>
-    <button class='text-white flex items-center text-sm hover:bg-[#361500] transition delay-150 duration-300 ease-in-out'>Login As Admin</button>
-  </div>  
+  const [openProfile, setOpenProfile] = useState(true)
 
-     <div className='bg-[#361500] text-lg w-full h-10 flex'>
-      
-        <div className='grid grid-cols-6 w-full justify-items-center content-center text-center text-white'>
-            <div className='w-full h-10 hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer'><a href="/">Home</a></div>
-            <div className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer'><a href="/about/">About</a></div>
-            <div className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer'><a href="/history/">History</a></div>
-            <div className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer'><a href="/announcement/">Accouncements</a></div>
-            <div className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer'><a href="/event/">Events</a></div>
-            <div className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer'><a href="/contact/">Contact Us</a></div>
-        </div>
+  return (
+    <div>  
+      <div className='bg-[#1C0A00] text-2xl w-full h-16 flex px-10 justify-between'>
+        <h1 className='text-white font-bold flex items-center'>
+          Rover Car Club Of Australia
+        </h1>
+        <button
+          className='text-white flex items-center text-lg font-bold'
+          onClick={() => console.log('clicked')}
+          >
+          <span className='mr-2 pb-1'>
+            <BsPersonBadge size={24} />
+          </span>
+          Admin
+        </button>
+        {openProfile && <DropDownProfile />}
+      </div>
+
+    <div className='bg-[#361500] text-lg w-full flex'>
+      <div className='grid grid-cols-6 w-full justify-items-center content-center text-center text-white'>
+        <a href="/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>Home</a>
+        <a href="/about/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>About</a>
+        <a href="/history/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>History</a>
+        <a href="/announcement/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>Accouncements</a>
+        <a href="/event/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>Events</a>
+        <a href="/contact/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>Contact Us</a>
+      </div>
     </div>
   </div>
 )
