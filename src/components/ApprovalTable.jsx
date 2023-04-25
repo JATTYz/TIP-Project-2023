@@ -20,7 +20,7 @@ const ApprovalTable = () => {
     useEffect(() => {
 
     async function getTest(){
-    const q = query(collection(db, "raac-collection"), where("isReject", "==", false));
+    const q = query(collection(db, "raac-collection"), where("isPending", "==", true));
     const docRef = await getDocs(q);
     setId([]);
     setType([]);
@@ -56,10 +56,12 @@ const ApprovalTable = () => {
     const [popDateDoc, setPopDateDoc] = useState();
     const [popCreatorDoc, setPopCreatorDoc] = useState();
     const [popCoverateDoc, setPopCoverageDoc] = useState();
+    const [popUrl, setPopUrl] = useState();
     const [popContributionDoc, setPopContributionDoc] = useState();
     const [isPopLoading, setIsPopLoading] = useState(true);
 
     const popUpCard = async (docId) => {
+      setIsPopLoading(true)
       setIsOpen(false)
       const docRef = await getDoc(doc(db, "raac-collection",docId))
       if(docRef.exists()){
@@ -77,6 +79,7 @@ const ApprovalTable = () => {
       setPopDescriptionDoc(docRef.data().description)
       setPopDateDoc(docRef.data().date)
       setPopCreatorDoc(docRef.data().creator)
+      setPopUrl(docRef.data().url)
       setPopCoverageDoc(docRef.data().coverage)
       setPopContributionDoc(docRef.data().contribution)
       }else{
@@ -113,6 +116,10 @@ const ApprovalTable = () => {
       setIsAlertApprove(child)
     }
 
+    const handleCloseFullInfo = () => {
+      setIsOpen(!isOpen)
+      setPopUrl()
+    }
   return (
     <div>
       {isLoading? (
@@ -131,7 +138,7 @@ const ApprovalTable = () => {
                 <div className="text-xl dark:text-gray-300 font-extrabold">Total Pending</div>
               </div>
                 <div className="items-center pt-1">
-                    <div className="text-2xl font-bold  text-gray-100 pt-4">{id.length + 1}</div>
+                    <div className="text-2xl font-bold  text-gray-100 pt-4">{ id.length == 0 ? 0 : id.length}</div>
                 </div>
             </div>
             <div className="p-5 bg-white rounded-lg dark:bg-amber-800 w-48 shadow-lg shadow-amber-950">
@@ -159,12 +166,16 @@ const ApprovalTable = () => {
           <div className='flex justify-between pt-6'>
            <h1 className="mb-2 text-3xl font-bold tracking-tight text-white ">Document Upload Details</h1>
            <button 
-           onClick={() => setIsOpen(!isOpen)}
+           onClick={() => handleCloseFullInfo()}
            className="text-white font-bold bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Close</button>
           </div>
-         <img src="../../public/approve.png" alt="" width={100} className='my-10'/> 
+          <div className='flex w-full justify-center'>
+            <div>
+                <img src={popUrl} alt="" width={600} className='my-10'/> 
+            </div>
+          </div>
 
-          {isPopLoading? (
+          {isPopLoading ? (
              <div className='w-full h-screen'>
                 <div className="absolute top-1/2 left-1/2  h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"role="status"> </div>
                 <h1 className='absolute top-1/2 left-1/2 mt-10 -ml-6 font-bold text-2xl'>Loading...</h1>
@@ -175,7 +186,6 @@ const ApprovalTable = () => {
                   <dt className="mb-1 text-gray-800 font-bold">{doc.title}</dt>
                   <dd className="text-lg font-semibold">{doc.value}</dd>
               </div>
-              
           </dl>
           ))}
 
@@ -240,6 +250,9 @@ const ApprovalTable = () => {
             ))} 
             </tbody>
             </table>
+            {
+              id.length === 0 ?<h1 className='text-center my-6 font-bold text-4xl'>EMPTY LIST</h1>: null
+            }
             </div>
             </div>
             </div>

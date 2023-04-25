@@ -10,14 +10,21 @@ const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Home Page", src: "home", path:"/" },
-    { title: "Document Approval", src: "approve" },
-    { title: "Analytics", src: "analytics" },
+    { title: "Document Approval", src: "documentation", path:"#section-1" },
+    { title: "Analytics", src: "analytics" , path: "#section-2"},
     { title: "Upload Document", src: "upload"},
     { title: "Logout", src: "exit"},
   ];
 
+
+  const test = () => {
+
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+  }
+
   return (
-    <div className="flex">
+    <div className="flex scroll-smooth">
       <div
         className={` ${
           open ? "w-72" : "w-20 "
@@ -29,13 +36,13 @@ const Sidebar = () => {
            border-2 rounded-full ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
         />
-        <div className="flex gap-x-4 items-center">
-          {/* <img
-            src="/public/logo.png"
-            className={`cursor-pointer duration-500 ${
-              open && "rotate-[360deg]"
-            }`}
-          /> */}
+        <div className="flex gap-x-4 items-center relative">
+          <img
+            src="../../public/profile.jpg"
+            className={`rounded-full cursor-pointer duration-500 ${
+              open && "rotate-[360deg]" 
+            } w-20`}
+          />
           <h1
             className={`text-white origin-left font-bold text-2xl duration-200 ${
               !open && "scale-0"
@@ -48,7 +55,7 @@ const Sidebar = () => {
           {Menus.map((Menu, index) => (
             <li
               key={index}
-              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2
+              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-6
               ${
                 index === 0 && "bg-light-white"
               } `}
@@ -64,13 +71,13 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="min-h-screen flex-1 p-7  bg-gray-200">
-        <h1 className="text-2xl font-extrabold ">Document Approval</h1>
+        <h1 className="text-2xl font-extrabold " id="section-1">Document Approval</h1>
 
         <div className="grid grid-cols-1">
-            <ApprovalTable key="ASBC"/> 
+            <ApprovalTable key="HSBC"/> 
         </div>
         <div className="mt-20">
-          <h1 className="text-2xl font-extrabold">Analytics</h1>
+          <h1 className="text-2xl font-extrabold" id="section-2">Analytics</h1>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 w-full h-auto mt-10">
           <div>
