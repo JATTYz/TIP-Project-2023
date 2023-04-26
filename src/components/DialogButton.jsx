@@ -33,6 +33,7 @@ const DialogButton = (props) => {
       console.log(docId);
     }
 
+
     const approveDoc = async(docId) => {
       props.onClose(true)
       props.onAlert(true)
@@ -43,6 +44,7 @@ const DialogButton = (props) => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
+
     const reJectDoc = async(docId) => {
       props.onClose(true)
       props.onAlert(true)
@@ -52,6 +54,7 @@ const DialogButton = (props) => {
       )
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
+
   const rejectDocFromPop = async (docId) => {
       const docRef = doc(db, "raac-collection", docId);
       await updateDoc(docRef, {isApprove: false, isReject: true}).then(
@@ -101,6 +104,7 @@ const DialogButton = (props) => {
           {props.buttonType === "approve" ? 
           // <Button onClick={() => approveDocFromPop(props.id)} autoFocus>Agree</Button>: 
           // <Button onClick={() => rejectDocFromPop(props.id)} autoFocus>Reject</Button>
+
 
 
 

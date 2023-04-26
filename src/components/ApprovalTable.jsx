@@ -20,6 +20,7 @@ const ApprovalTable = () => {
     useEffect(() => {
 
     async function getTest(){
+
     const q = query(collection(db, "raac-collection"), where("isPending", "==", true));
     const docRef = await getDocs(q);
     setId([]);
@@ -114,11 +115,12 @@ const ApprovalTable = () => {
 
     const handleDialogAlert = (child) => {
       setIsAlertApprove(child)
-    }
+
 
     const handleCloseFullInfo = () => {
       setIsOpen(!isOpen)
       setPopUrl()
+
     }
   return (
     <div>
