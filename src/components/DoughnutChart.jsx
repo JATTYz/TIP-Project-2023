@@ -7,10 +7,10 @@ const option = {
     responsive: true
 }
 export const data = {
-  labels: ['AdvertisementJournal', 'ArticleNewspaper', 'PhotographCommercial', 'BookTechnical', 'SalesRecord', 'SalesBrochure'],
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
-      label: 'TYPE',
+      label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
@@ -28,7 +28,7 @@ export const data = {
         'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)',
       ],
-      borderWidth: 2,
+      borderWidth: 1,
     },
   ],
 };
