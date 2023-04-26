@@ -115,7 +115,7 @@ const ApprovalTable = () => {
 
     const handleDialogAlert = (child) => {
       setIsAlertApprove(child)
-
+    }
 
     const handleCloseFullInfo = () => {
       setIsOpen(!isOpen)
