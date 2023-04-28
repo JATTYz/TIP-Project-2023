@@ -6,13 +6,13 @@ import TestFetch from '../components/TestFetch';
 import Layout from '../layouts/Layout.astro';
 import StickyHeadTable from '../components/Test';
 import SearchBar from '../components/SearchBar.jsx';
-const greeting: String = "Hello World";
-
+import Blog from '../components/Blog.jsx';
 ---
 
 <Layout title="Welcome to RCCA">
 	<Header client:load/>
 	<div>
 		<SearchBar client:load/>
+		<Blog client:load/>
 	</div>
 </Layout>

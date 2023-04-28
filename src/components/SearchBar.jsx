@@ -32,8 +32,6 @@ const SearchBar = () => {
 
 
     return (
-        
-
         <div className='grid grid-cols-6'>
             <span className='col-span-1' />
 
@@ -69,14 +67,6 @@ const SearchBar = () => {
                         <BiFilter className='text-white text-3xl'/>
                     </span>  
                 </div>
-            </div>
-
-            <div className='col-span-6 text-center bg-slate-200'>
-                <div className='text-3xl mt-10 mb-10'>Explore our Blogs & Images</div>
-            </div>
-
-            <div className='col-span-6 text-center bg-blue-200'>
-                <div className='text-3xl mt-20 mb-20'>TBA / additional fields</div>
             </div>
         </div>
     );
