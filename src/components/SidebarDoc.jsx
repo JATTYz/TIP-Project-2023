@@ -3,16 +3,15 @@ import ApprovalTable from "./ApprovalTable";
 import DoughnutChart from "./DoughnutChart";
 import RadarChart from "./RadarChart";
 import BubbleChart from "./BubbleChart";
+import AllDocuments from "./AllDocuments";
 
 
 
-const Sidebar = () => {
+const SidebarDoc = () => {
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Home Page", src: "home", path:"/" },
-    { title: "Document Approval", src: "documentation", path:"#section-1" },
-    { title: "Analytics", src: "analytics" , path: "#section-2"},
-    { title: "Upload Document", src: "upload"},
+    { title: "Admin Dashboard", src: "documentation", path:"/admin/approval" },
     { title: "Logout", src: "exit"},
   ];
 
@@ -71,40 +70,10 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="min-h-screen flex-1 p-7  bg-gray-200">
-        <h1 className="text-2xl font-extrabold " id="section-1">Document Approval</h1>
-
-        <div className="grid grid-cols-1">
-            <ApprovalTable key="HSBC"/> 
-        </div>
-        <div className="mt-20">
-          <h1 className="text-2xl font-extrabold" id="section-2">Analytics</h1>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 w-full h-auto mt-10">
-          <div>
-           <DoughnutChart />
-            <h1 className="text-center font-bold text-lg mt-10">Document Type</h1>
-          </div>
-          <div>
-            <RadarChart />
-            <h1 className="text-center font-bold text-lg mt-10">Document Upload Trend</h1>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 w-full h-auto mt-20">
-          <div>
-            <BubbleChart />
-            <h1 className="text-center font-bold text-lg">TRAFFIC</h1>
-          </div>
-        </div>
-        <div className="mt-20">
-          <h1 className="text-2xl font-bold">Manually Upload Document</h1>
-          <div className="mt-3 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-              <div className="flex justify-center">
-                <h1 className="text-xl dark:text-gray-300 font-extrabold">Click to upload</h1>
-              </div>
-            </div>
-          </div>
+        <h1 className="text-2xl font-bold " id="section-1">All Documents</h1>
+        <AllDocuments />
       </div>
     </div>
   );
 };
-export default Sidebar;
+export default SidebarDoc;
