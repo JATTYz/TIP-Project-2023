@@ -4,7 +4,7 @@ import { BsPersonBadge } from 'react-icons/bs'
 
 const Header = () => {
 
-  const [openProfile, setOpenProfile] = useState(true)
+  const [openProfile, setOpenProfile] = useState(false)
 
   return (
     <div>  
@@ -14,7 +14,7 @@ const Header = () => {
         </h1>
         <button
           className='text-white flex items-center text-lg font-bold'
-          onClick={() => console.log('clicked')}
+          onClick={() => setOpenProfile(true)}
           >
           <span className='mr-2 pb-1'>
             <BsPersonBadge size={24} />
