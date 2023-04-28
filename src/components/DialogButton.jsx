@@ -49,7 +49,9 @@ const DialogButton = (props) => {
     const reJectDoc = async(docId) => {
       props.onClose(true)
       props.onAlert(true)
+
       props.approveType("REJECTED")
+
       const docRef = doc(db, "raac-collection", docId);
       await updateDoc(docRef, {isApprove: false, isPending: false}).then(
         setOpen(false)
@@ -106,6 +108,7 @@ const DialogButton = (props) => {
           {props.buttonType === "approve" ? 
           // <Button onClick={() => approveDocFromPop(props.id)} autoFocus>Agree</Button>: 
           // <Button onClick={() => rejectDocFromPop(props.id)} autoFocus>Reject</Button>
+
           <Button onClick={() => approveDoc(props.id)} autoFocus>Agree</Button>: 
           <Button onClick={() => reJectDoc(props.id)} autoFocus>Reject</Button>
           }

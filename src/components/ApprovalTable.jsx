@@ -121,11 +121,13 @@ const ApprovalTable = () => {
     const handleCloseFullInfo = () => {
       setIsOpen(!isOpen)
       setPopUrl()
+
     }
 
     const handleStringApprove = (child) => {
       setIsStringApprove(child)
     } 
+
 
   return (
     <div>
@@ -174,6 +176,7 @@ const ApprovalTable = () => {
            <h1 className="mb-2 text-3xl font-bold tracking-tight text-black ">Document Upload Details</h1>
            <button 
            onClick={() => handleCloseFullInfo()}
+
            className="w-40 text-white font-bold bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Close</button>
           </div>
           <div className='flex w-full justify-center'>
@@ -183,6 +186,7 @@ const ApprovalTable = () => {
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+
           {isPopLoading ? (
              <div className='w-full h-screen'>
                 <div className="absolute top-1/2 left-1/2  h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"role="status"> </div>
@@ -191,6 +195,7 @@ const ApprovalTable = () => {
           ) : 
           
           popUpData.map((doc, index) => (
+
 
             <div key={index} className="w-full text-white divide-gray-700 bg-[#A25418] rounded-lg p-6 my-6">
               <h1 className="mb-3 text-zinc-900 font-bold text-2xl">{doc.title}:</h1>
@@ -261,7 +266,9 @@ const ApprovalTable = () => {
             </tbody>
             </table>
             {
+
               id.length === 0 && <h1 className='text-center my-6 font-bold text-4xl'>EMPTY LIST</h1>
+
             }
             </div>
             </div>
