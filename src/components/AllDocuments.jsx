@@ -3,8 +3,10 @@ import { db } from '../firebase/firebaseConfig'
 import { collection, doc, getDocs, getDoc, where, query } from 'firebase/firestore'
 import DialogButton from './DialogButton';
 import AlertText from './AlertText';
+import EditButton from './EditButton';
+import { Input } from '@mui/material';
 
-const ApprovalTable = () => {
+const AllDocuments = () => {
 
 
     const [currentID, setCurrentId] = useState();
@@ -22,7 +24,7 @@ const ApprovalTable = () => {
 
     async function getTest(){
 
-    const q = query(collection(db, "raac-collection"), where("isPending", "==", true));
+    const q = query(collection(db, "raac-collection"), where("isApprove", "==", true));
     const docRef = await getDocs(q);
     setId([]);
     setType([]);
@@ -121,13 +123,11 @@ const ApprovalTable = () => {
     const handleCloseFullInfo = () => {
       setIsOpen(!isOpen)
       setPopUrl()
-
     }
 
     const handleStringApprove = (child) => {
       setIsStringApprove(child)
     } 
-
 
   return (
     <div>
@@ -140,43 +140,12 @@ const ApprovalTable = () => {
           {
             isAlertApprove && <AlertText isApproveAction={setIsAlertApprove} type={isStringApprove}/> 
           }
-         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-center my-6">
-            <div className="p-5  rounded-lg  bg-[#361500] w-48  shadow-lg shadow-amber-950">
-              <div className="flex">
-                <img src="../../public/pending.png" className="w-14  h-12 mr-4" />
-                <div className="text-xl dark:text-gray-300 font-extrabold">Total Pending</div>
-              </div>
-                <div className="items-center pt-1">
-                    <div className="text-2xl font-bold  text-gray-100 pt-4">{ id.length == 0 ? 0 : id.length}</div>
-                </div>
-            </div>
-            <div className="p-5 rounded-lg bg-[#361500] w-48 shadow-lg shadow-amber-950">
-              <div className="flex">
-                <img src="../../public/trend.png" className="w-14 mr-4 h-12" />
-                <div className="text-xl  text-gray-300 font-extrabold">Trend Type</div>
-              </div>
-                <div className="flex items-center pt-1">
-                    <div className="text-2xl font-bold  text-gray-100 pt-4">Annoucement</div>
-                </div>
-            </div>
-
-            <div className="p-5  rounded-lg bg-[#361500] w-48 shadow-lg shadow-amber-950">
-              <div className="flex">
-                <img src="../../public/update.png" className="w-14 mr-4 h-12" />
-                <div className="text-xl font-extrabold text-gray-300 ">Recent Uploaded</div>
-              </div>
-                <div className="flex items-center pt-1">
-                    <div className="text-2xl font-bold  text-gray-100 pt-4">22/04/2023</div>
-                </div>
-            </div>
-        </div>
 
         <div className={`bg-[#CCB39C] shadow-xl  ${isOpen && "hidden"} rounded-xl w-full  px-10`}>
           <div className='flex justify-between pt-6'>
-           <h1 className="mb-2 text-3xl font-bold tracking-tight text-black ">Document Upload Details</h1>
+           <h1 className="mb-2 text-3xl font-bold tracking-tight text-black ">Edit Document</h1>
            <button 
            onClick={() => handleCloseFullInfo()}
-
            className="w-40 text-white font-bold bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Close</button>
           </div>
           <div className='flex w-full justify-center'>
@@ -186,7 +155,6 @@ const ApprovalTable = () => {
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-
           {isPopLoading ? (
              <div className='w-full h-screen'>
                 <div className="absolute top-1/2 left-1/2  h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"role="status"> </div>
@@ -196,23 +164,22 @@ const ApprovalTable = () => {
           
           popUpData.map((doc, index) => (
 
-
-            <div key={index} className="w-full text-white divide-gray-700 bg-[#A25418] rounded-lg p-6 my-6">
-              <h1 className="mb-3 text-zinc-900 font-bold text-2xl">{doc.title}:</h1>
-              <h1 className="text-xl font-semibold">{doc.value}</h1>
+            <div key={index} className="w-full text-white divide-gray-700 bg-slate-200 rounded-lg p-6 my-6">
+              <h1 className="mb-3 text-zinc-900 font-bold text-2xl">Edit {doc.title}:</h1>
+              {/* <Input className='w-full border-solid' size="lg" variant="solid" color="primary" defaultValue={doc.value}/> */}
+              {/* <Input placeholder="Type in here…" variant="soft" defaultValue={doc.value} /> */}
+              <input type="text" defaultValue={doc.value} class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
             </div>
           ))
           }
           </div>
          <div className='flex justify-center'>
           <div className='my-3 mx-3'>
-          <DialogButton buttonType="approve" id={currentID} onClose={handleClosePopup} onAlert={handleDialogAlert} approveType={handleStringApprove}/>
-          {/* <DialogButton buttonType="approve" id={currentID} onAlert={() => handleDialogAlert()}/> */}
+          <EditButton buttonType="edit" id={currentID} onClose={handleClosePopup} onAlert={handleDialogAlert} approveType={handleStringApprove}/>
           </div>
           <div className='my-3 mx-3'>
 
-          <DialogButton buttonType="reject" id={currentID} onClose={handleClosePopup} onAlert={handleDialogAlert} approveType={handleStringApprove}/>
-          {/* <DialogButton buttonType="reject" id={currentID} onAlert={() => handleDialogAlert()}/> */}
+          <EditButton buttonType="clear" id={currentID} onClose={handleClosePopup} onAlert={handleDialogAlert} approveType={handleStringApprove}/>
           </div>
          </div>
         </div>
@@ -230,8 +197,7 @@ const ApprovalTable = () => {
               <th scope="col" className="px-6 py-4">Title</th>
               <th scope="col" className="px-6 py-4">Description</th>
               <th scope="col" className="px-6 py-4">Date</th>
-              <th scope="col" className="px-6 py-6">Full Info</th>
-              <th scope="col" className="px-6 py-4">Approval</th>
+              <th scope="col" className="px-6 py-6">Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -248,27 +214,17 @@ const ApprovalTable = () => {
               <td className="whitespace-nowrap px-6 py-4">
                 <button
                 onClick={() => popUpCard(docId)} 
+                className="w-32 bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded"
                 >
-                <img src="/public/dots.png" alt="" className='h-5 w-auto' />
+                EDIT
                 </button>
-              </td>
-              <td className="whitespace-nowrap px-6 py-4">
-                <div className='flex'>
-                <DialogButton id={docId} buttonType="approve"  onAlert={handleDialogAlert} onClose={handleClosePopup} approveType={handleStringApprove}/>
-                <DialogButton id={docId} buttonType="reject"   onAlert={handleDialogAlert} onClose={handleClosePopup} approveType={handleStringApprove}/>
-                </div>
-                {/* <button className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded">
-                Need More Info
-                </button> */}
               </td>
             </tr>
             ))} 
             </tbody>
             </table>
             {
-
               id.length === 0 && <h1 className='text-center my-6 font-bold text-4xl'>EMPTY LIST</h1>
-
             }
             </div>
             </div>
@@ -278,10 +234,9 @@ const ApprovalTable = () => {
 
 }
    
-
 </div>
   )
 }
 
-export default ApprovalTable
+export default AllDocuments
 

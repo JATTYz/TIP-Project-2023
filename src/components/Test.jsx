@@ -85,6 +85,23 @@ const testUploadData = async (url) => {
     });
 
   }
+const testUpload = async() => {
+
+  const docRef = doc(db, 'raac-collection', '5DbBMY5SX1mvGadFKfI3');
+  const docRef2 = doc(db, 'raac-collection', 'A2CkN4jnON2VZYWbbTli');
+  const docRef3 = doc(db, 'raac-collection', 'TGTdEnjHL6Jt313HrTV2');
+  const docRef4 = doc(db, 'raac-collection', 'beT9VgtfEnZYYw0uAZG6');
+  const docRef5 = doc(db, 'raac-collection', 'o2cOMUfPOlG2FgCuc5EL');
+
+  await updateDoc(docRef, { isPending: true })
+  await updateDoc(docRef2, { isPending: true })
+  await updateDoc(docRef3, { isPending: true })
+  await updateDoc(docRef4, { isPending: true })
+  await updateDoc(docRef5, { isPending: true })
+  alert("SUCCESS")
+
+}
+
 
 
   return (
@@ -97,6 +114,10 @@ const testUploadData = async (url) => {
         <button 
         onClick={()=> testUploadData()} 
         className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded mr-3"> ADD DUMMY DATA</button>
+
+        <button 
+        onClick={()=> testUpload()} 
+        className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded mr-3"> CHANGE</button>
     </div>
   )
 }
