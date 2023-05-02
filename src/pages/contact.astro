@@ -1,0 +1,16 @@
+---
+import Header from '../components/Header.jsx';
+import Layout from '../layouts/Layout.astro';
+
+const greeting: String = "Contact Us Page";
+
+---
+
+<Layout title="Welcome to Astro.">
+	<Header />
+	<div>
+		<div class="px-10 text-3xl">
+		<h1>{greeting}</h1>
+		</div>
+	</div>
+</Layout>
