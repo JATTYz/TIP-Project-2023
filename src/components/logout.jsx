@@ -1,6 +1,6 @@
 import {auth} from "../firebase/firebaseConfig.js";
 import {signOut} from "firebase/auth";
-import React, {useState} from "react";
+import React from "react";
 
 function LogoutButton() {
     const handleLogout = () => {
