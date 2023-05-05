@@ -7,7 +7,7 @@ const Upload = () => {
            <h1 className='text-center font-bold text-2xl my-10'>Please Select Upload Documentation Type</h1>
            <div className='w-full grid md:grid-cols-2 '>
             <div className='my-3 h-24 text-center ' >
-                <a href="/upload/ArticleJournal" >
+                <a href="/upload/AdvertisementNewspaper" >
                  <button className="text-white border-4 border-amber-950 rounded-lg  bg-amber-800 h-full w-1/2">AdvertisementNewspaper</button>
                 </a>
             </div>
