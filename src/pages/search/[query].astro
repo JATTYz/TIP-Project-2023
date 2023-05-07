@@ -1,0 +1,54 @@
+---
+import Header from '../../components/Header.jsx'
+import Layout from '../../layouts/Layout.astro'
+import SearchBar from '../../components/SearchBar.jsx'
+import { collection, query, getDocs, where } from 'firebase/firestore'
+import { db } from '../../firebase/firebaseConfig'
+
+export async function getStaticPaths() {
+  // Make a query to fetch all the available types
+  const q = query(collection(db, "raac-collection"), where("isApprove", "==", true))
+  const querySnapshot = await getDocs(q)
+  const types = new Set()
+  querySnapshot.forEach((doc) => {
+    const record = doc.data()
+    types.add(record.type)
+  })
+
+  // Generate paths for each type
+  const paths = [...types].map((type) => ({ params: { query: type } }))
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const q = query(
+    collection(db, "raac-collection"),
+    where("isApprove", "==", true),
+    where("type", "==", params.query),
+  )
+  const querySnapshot = await getDocs(q)
+  const data = querySnapshot.docs.map((doc) => {
+    const record = doc.data()
+    return {
+      title: record.title,
+      description: record.description
+    }
+  })
+
+  return {
+    props: {
+      results: data,
+    },
+  }
+}
+
+<Layout title={`Search Results for "${results[0].type}"`}>
+  <Header />
+  <div>
+    <SearchBar />
+  </div>
+</Layout>
