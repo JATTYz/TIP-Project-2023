@@ -1,0 +1,57 @@
+---
+import Header from '../../components/Header.jsx';
+import Sidebar from '../../components/Sidebar.jsx';
+import Upload from '../../components/Upload.jsx';
+import AdvertisementJournal from '../../components/uploadTypes/AdvertisementJournal.jsx';
+import AdvertisementNewspaper from '../../components/uploadTypes/AdvertisementNewspaper.jsx';
+import ArticleJournal from '../../components/uploadTypes/ArticleJournal.jsx';
+import ArticleNewspaper from '../../components/uploadTypes/ArticleNewspaper.jsx';
+import PhotographCommercial from '../../components/uploadTypes/PhotographCommercial.jsx';
+import SaleBrochure from '../../components/uploadTypes/SaleBrochure.jsx';
+import SaleRecord from '../../components/uploadTypes/SaleRecord.jsx';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  return [
+    { params: { upload: "AdvertisementNewspaper" } },
+    { params: { upload: "AdvertisementJournal" } },
+    { params: { upload: "ArticleJournal" } },
+    { params: { upload: "ArticleNewspaper" } },
+    { params: { upload: "SaleBrochure" } },
+    { params: { upload: "SaleRecord" } },
+    { params: { upload: "PhotographCommercial" } },
+  ];
+}
+
+const { upload } = Astro.params;
+---
+
+<Layout title={upload}>
+	<Header />
+	<div>
+		<div class="px-10 text-3xl">
+		<h1 class="text-center py-3 font-semibold">{upload}</h1>
+		{(() => {
+        switch (upload) {
+          case 'AdvertisementNewspaper':
+            return <AdvertisementNewspaper client:load/>;
+          case 'AdvertisementJournal':
+            return <AdvertisementJournal client:load/>;
+          case 'ArticleJournal':
+            return <ArticleJournal client:load/>;
+          case 'ArticleNewspaper':
+            return <ArticleNewspaper client:load/>;
+          case 'SaleBrochure':
+            return <SaleBrochure client:load/>;
+          case 'SaleRecord':
+            return <SaleRecord client:load/>;
+          case 'PhotographCommercial':
+            return <PhotographCommercial client:load/>;
+          default:
+            return null;
+        }
+      })()}
+		</div>
+	</div>
+</Layout>
+
