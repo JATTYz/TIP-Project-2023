@@ -1,8 +1,4 @@
 import { useState } from "react";
-import ApprovalTable from "./ApprovalTable";
-import DoughnutChart from "./DoughnutChart";
-import RadarChart from "./RadarChart";
-import BubbleChart from "./BubbleChart";
 import AllDocuments from "./AllDocuments";
 
 
@@ -37,7 +33,7 @@ const SidebarDoc = () => {
         />
         <div className="flex gap-x-4 items-center relative">
           <img
-            src="../../public/profile.jpg"
+            src="../../public/man.png"
             className={`rounded-full cursor-pointer duration-500 ${
               open && "rotate-[360deg]" 
             } w-20`}
@@ -69,7 +65,7 @@ const SidebarDoc = () => {
           ))}
         </ul>
       </div>
-      <div className="min-h-screen flex-1 p-7  bg-gray-200">
+      <div className="min-h-screen flex-1 p-7  bg-white">
         <h1 className="text-2xl font-bold " id="section-1">All Documents</h1>
         <AllDocuments />
       </div>

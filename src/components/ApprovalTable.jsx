@@ -44,22 +44,22 @@ const ApprovalTable = () => {
     getTest()
     }, [isAlertApprove])
 
-    const [popTitleDoc, setPopTitleDoc ] = useState();
-    const [popTypeDoc, setPopTypeDoc] = useState();
-    const [popSubjectDoc, setPopSubjectDoc] = useState();
-    const [popSourceDoc, setPopSourceDoc] = useState();
-    const [popRightsDoc, setPopRightsDoc] = useState();
-    const [popRelationDoc, setPopRelationDoc] = useState();
-    const [popPublisherDoc, setPopPublisherDoc] = useState();
-    const [popLanguageDoc, setPopLanguageDoc] = useState();
-    const [popIdentifierDoc, setPopIdentifierDoc] = useState();
-    const [popFormatDoc, setPopFormatDoc] = useState();
-    const [popDescriptionDoc, setPopDescriptionDoc] = useState();
-    const [popDateDoc, setPopDateDoc] = useState();
-    const [popCreatorDoc, setPopCreatorDoc] = useState();
-    const [popCoverateDoc, setPopCoverageDoc] = useState();
-    const [popUrl, setPopUrl] = useState();
-    const [popContributionDoc, setPopContributionDoc] = useState();
+    const [popTitleDoc, setPopTitleDoc ] = useState("N/A");
+    const [popTypeDoc, setPopTypeDoc] = useState("N/A");
+    const [popSubjectDoc, setPopSubjectDoc] = useState("N/A");
+    const [popSourceDoc, setPopSourceDoc] = useState("N/A");
+    const [popRightsDoc, setPopRightsDoc] = useState("N/A");
+    const [popRelationDoc, setPopRelationDoc] = useState("N/A");
+    const [popPublisherDoc, setPopPublisherDoc] = useState("N/A");
+    const [popLanguageDoc, setPopLanguageDoc] = useState("N/A");
+    const [popIdentifierDoc, setPopIdentifierDoc] = useState("N/A");
+    const [popFormatDoc, setPopFormatDoc] = useState("N/A");
+    const [popDescriptionDoc, setPopDescriptionDoc] = useState("N/A");
+    const [popDateDoc, setPopDateDoc] = useState("N/A");
+    const [popCreatorDoc, setPopCreatorDoc] = useState("N/A");
+    const [popCoverateDoc, setPopCoverageDoc] = useState("N/A");
+    const [popUrl, setPopUrl] = useState("N/A");
+    const [popContributionDoc, setPopContributionDoc] = useState("N/A");
     const [isPopLoading, setIsPopLoading] = useState(true);
 
     const popUpCard = async (docId) => {
@@ -67,23 +67,57 @@ const ApprovalTable = () => {
       setIsOpen(false)
       const docRef = await getDoc(doc(db, "raac-collection",docId))
       if(docRef.exists()){
+      
+        if(docRef.data().title =! ""){
+        setPopTitleDoc(docRef.data().title)
+        }
 
-      setPopTitleDoc(docRef.data().title)
-      setPopTypeDoc(docRef.data().type)
-      setPopSubjectDoc(docRef.data().subject)
-      setPopSourceDoc(docRef.data().source)
-      setPopRightsDoc(docRef.data().rights)
-      setPopRelationDoc(docRef.data().relation)
-      setPopPublisherDoc(docRef.data().publisher)
-      setPopLanguageDoc(docRef.data().language)
-      setPopIdentifierDoc(docRef.data().identifier)
-      setPopFormatDoc(docRef.data().format)
-      setPopDescriptionDoc(docRef.data().description)
-      setPopDateDoc(docRef.data().date)
-      setPopCreatorDoc(docRef.data().creator)
-      setPopUrl(docRef.data().url)
-      setPopCoverageDoc(docRef.data().coverage)
-      setPopContributionDoc(docRef.data().contribution)
+        if(docRef.data().type =! "") {
+        setPopTypeDoc(docRef.data().type)
+        }
+        if(docRef.data().subject) {
+        setPopSubjectDoc(docRef.data().subject)
+        }
+        if(docRef.data().source) {
+        setPopSourceDoc(docRef.data().source)
+        }
+        if(docRef.data().rights) {
+        setPopRightsDoc(docRef.data().rights)
+        }
+        if(docRef.data().relation) {
+        setPopRelationDoc(docRef.data().relation)
+        }
+        if(docRef.data().publisher) {
+        setPopPublisherDoc(docRef.data().publisher)
+        }
+        if(docRef.data().language) {
+        setPopLanguageDoc(docRef.data().language)
+        }
+        if(docRef.data().identifier) {
+        setPopIdentifierDoc(docRef.data().identifier)
+        }
+        if(docRef.data().format) {
+        setPopFormatDoc(docRef.data().format)
+        }
+        if(docRef.data().description) {
+        setPopDescriptionDoc(docRef.data().description)
+        }
+        if(docRef.data().date) {
+        setPopDateDoc(docRef.data().date)
+        }
+        if(docRef.data().creator) {
+        setPopCreatorDoc(docRef.data().creator)
+        }
+        if(docRef.data().url) {
+        setPopUrl(docRef.data().url)
+        }
+        if(docRef.data().coverage) {
+        setPopCoverageDoc(docRef.data().coverage)
+        }
+        if(docRef.data().contribution) {
+        setPopContributionDoc(docRef.data().contribution)
+        }
+      
       }else{
         console.log("CAN'T FIND");
       }
@@ -140,7 +174,7 @@ const ApprovalTable = () => {
           {
             isAlertApprove && <AlertText isApproveAction={setIsAlertApprove} type={isStringApprove}/> 
           }
-         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 justify-items-center my-6">
+         <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-5 justify-items-center my-6">
             <div className="p-5  rounded-lg  bg-[#361500] w-48  shadow-lg shadow-amber-950">
               <div className="flex">
                 <img src="../../public/pending.png" className="w-14  h-12 mr-4" />
@@ -150,15 +184,6 @@ const ApprovalTable = () => {
                     <div className="text-2xl font-bold  text-gray-100 pt-4">{ id.length == 0 ? 0 : id.length}</div>
                 </div>
             </div>
-            <div className="p-5 rounded-lg bg-[#361500] w-48 shadow-lg shadow-amber-950">
-              <div className="flex">
-                <img src="../../public/trend.png" className="w-14 mr-4 h-12" />
-                <div className="text-xl  text-gray-300 font-extrabold">Trend Type</div>
-              </div>
-                <div className="flex items-center pt-1">
-                    <div className="text-2xl font-bold  text-gray-100 pt-4">Annoucement</div>
-                </div>
-            </div>
 
             <div className="p-5  rounded-lg bg-[#361500] w-48 shadow-lg shadow-amber-950">
               <div className="flex">
@@ -166,7 +191,7 @@ const ApprovalTable = () => {
                 <div className="text-xl font-extrabold text-gray-300 ">Recent Uploaded</div>
               </div>
                 <div className="flex items-center pt-1">
-                    <div className="text-2xl font-bold  text-gray-100 pt-4">22/04/2023</div>
+                    <div className="text-2xl font-bold  text-gray-100 pt-4">28/04/2023</div>
                 </div>
             </div>
         </div>
@@ -181,7 +206,7 @@ const ApprovalTable = () => {
           </div>
           <div className='flex w-full justify-center'>
             <div>
-                <img src={popUrl} alt="" width={600} className='my-10'/> 
+                <img src={popUrl} alt="" width={300} className='my-10'/> 
             </div>
           </div>
 
@@ -207,12 +232,10 @@ const ApprovalTable = () => {
          <div className='flex justify-center'>
           <div className='my-3 mx-3'>
           <DialogButton buttonType="approve" id={currentID} onClose={handleClosePopup} onAlert={handleDialogAlert} approveType={handleStringApprove}/>
-          {/* <DialogButton buttonType="approve" id={currentID} onAlert={() => handleDialogAlert()}/> */}
           </div>
           <div className='my-3 mx-3'>
 
           <DialogButton buttonType="reject" id={currentID} onClose={handleClosePopup} onAlert={handleDialogAlert} approveType={handleStringApprove}/>
-          {/* <DialogButton buttonType="reject" id={currentID} onAlert={() => handleDialogAlert()}/> */}
           </div>
          </div>
         </div>

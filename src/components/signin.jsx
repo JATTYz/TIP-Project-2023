@@ -16,29 +16,49 @@ function LoginForm() {
                 console.log(user);
                 window.location.replace("/admin");
             }
-        ).catch(e=>{
-            alert(e.message);
+        ).catch(e => {
+            window.alert("WRONG USERNAME OR PASSWORD");
         })
     };
 
     return (
-        <div className="grid grid-cols-6">
-            <span className=":col-span-1"></span>
-            <div className="col-span-1"><img className="scale-75 pr-10 my-5" src="/rccabadge.png" alt="rcca-badge"></img>
+        <div className="bg-gray-100 h-screen">
+            <div className="flex  justify-center pt-10">
+                <div className="px-8 py-6 mt-4 text-left bg-white shadow-lg w-1/2">
+                    <h1 className="text-center text-2xl">Rover Car Club of Australia</h1>
+                    <div className="flex justify-center">
+                        <img className="w-20 my-6" src="/rccabadge.png" alt="rcca-badge"></img>
+                    </div>
+                    <h3 className="text-lg font-bold text-center">Login to your account</h3>
+                        <div className="mt-4">
+                            <div>
+                                <label className="block" for="email">Email</label>
+                                        <input type="email" 
+                                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                            placeholder={'Email'} 
+                                            required={true} 
+                                            value={email} 
+                                            onChange={handleEmailChange}
+                                        />
+                            </div>
+                            <div className="mt-4">
+                                <label className="block">Password</label>
+                                        <input type="password" 
+                                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                        placeholder={'Password'} 
+                                        required={true} 
+                                        value={password} 
+                                        onChange={handlePasswordChange}    
+                                        />
+                            </div>
+                            <div className="flex items-baseline justify-between">
+                                <button className="px-6 py-2 mt-4 text-white bg-[#361500] rounded-lg hover:bg-[#1C0A00]"
+                                type="submit" onClick={()=> handleLogin()} 
+                                >Login</button>
+                            </div>
+                        </div>
+                </div>
             </div>
-            <div className="col-span-3 flex flex-col">
-                <div className="text-6xl mt-20 pl-5">Rover Car Club of Australia</div>
-                <div className="text-3xl pl-40 pt-5 items-center">Please Sign In to Continue</div>
-            </div>
-            <span className="col-span-1"></span>
-            <span className="col-span-2"></span>
-        <div className="col-span-2 mb-4 h-48 flex flex-col items-center justify-center">
-            <h1 className="mb-4 text-2xl">EMAIL:</h1>
-            <input className="mb-6 scale-150 rounded-lg border-2 px-2 border-zinc-950" type="email " placeholder={'Email'} required={true} value={email} onChange={handleEmailChange} />
-            <h1 className="mb-4 text-2xl">PASSWORD:</h1>
-            <input className="mb-6 border-2 scale-150 rounded-lg px-2 border-zinc-950" type="password" placeholder={'Password'} required={true} value={password} onChange={handlePasswordChange} />
-            <button className="block text-2xl bg-amber-950 hover:bg-amber-950-dark text-white uppercase mx-auto p-3 rounded-lg" type="submit" onClick={()=> handleLogin()}>Login</button>
-        </div>
         </div>
     );
 }
