@@ -1,14 +1,13 @@
 ---
-import Header from '../components/Header.jsx';
 import Layout from '../layouts/Layout.astro';
 import LoginCheck from "../components/loginCheck.jsx";
+import Header from '../components/Header.jsx';
 ---
 
 
 <Layout title="Welcome to Astro.">
-	<Header />
+    <Header client:load/>
     <LoginCheck client:load/>
-
 </Layout>
 
 

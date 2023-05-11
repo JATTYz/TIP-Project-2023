@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase/firebaseConfig'
 import { collection, doc, getDocs, getDoc, where, query } from 'firebase/firestore'
-import DialogButton from './DialogButton';
 import AlertText from './AlertText';
 import EditButton from './EditButton';
-import { Input } from '@mui/material';
 
 const AllDocuments = () => {
 
@@ -150,7 +148,7 @@ const AllDocuments = () => {
           </div>
           <div className='flex w-full justify-center'>
             <div>
-                <img src={popUrl} alt="" width={600} className='my-10'/> 
+                <img src={popUrl} alt="" width={300} className='my-10'/> 
             </div>
           </div>
 
@@ -166,8 +164,6 @@ const AllDocuments = () => {
 
             <div key={index} className="w-full text-white divide-gray-700 bg-slate-200 rounded-lg p-6 my-6">
               <h1 className="mb-3 text-zinc-900 font-bold text-2xl">Edit {doc.title}:</h1>
-              {/* <Input className='w-full border-solid' size="lg" variant="solid" color="primary" defaultValue={doc.value}/> */}
-              {/* <Input placeholder="Type in here…" variant="soft" defaultValue={doc.value} /> */}
               <input type="text" defaultValue={doc.value} class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
             </div>
           ))
