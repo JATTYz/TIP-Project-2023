@@ -12,7 +12,7 @@ const HistoryTimeLine = () => {
             <Timeline.Item bullet={<GiDeathStar size={12} />} title="Death of Rover">
                 <Text size="sm" mt={4} fs="italic">2005</Text>
                 <Text size="sm">How did MG Rover fail? Many pages of Newsprint, a damning 830 page Trade & Industry Committee Report and even a few books have been written about the demise of Rover as we knew it. Here though are a few of the more pertinent Press Releases from MG Rover Group during what must have been a turbulent April 2005, especially for the workers of MG Rover.</Text>
-            </Timeline.Item>
+            </Timeline.Item> 
 
             <Timeline.Item bullet={<RiAuctionFill size={12} />} title="MG Rover Australia Administrators Auction">
                 <Text size="sm" mt={4} fs="italic">13 June 2005</Text>
