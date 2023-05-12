@@ -28,7 +28,7 @@ const Header = () => {
       <div className='grid grid-cols-5 w-full justify-items-center content-center text-center text-white'>
         <a href="/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>Home</a>
         <a href="/about/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>About</a>
-        {/* <a href="/history/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>History</a> */}
+        <a href="/history/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>History</a>
         <a href="/upload/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>Upload</a>
         <a href="/contact/" className='w-full hover:bg-[#1C0A00] transition delay-150 duration-300 ease-in-out cursor-pointer py-2'>Contact Us</a>
       </div>

@@ -2,7 +2,6 @@ import { Carousel } from '@mantine/carousel';
 
 const Blog = () => {
 
-
     return (
         <div className='grid grid-cols-6'>
             <div className='col-span-6 text-center'>
