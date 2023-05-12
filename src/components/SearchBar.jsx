@@ -2,52 +2,61 @@ import './styles/global.css';
 import { AiOutlineSearch } from 'react-icons/ai';
 import React, { useState } from 'react';
 import { BiFilter } from 'react-icons/bi';
-import { collection, query, getDocs, where, and} from 'firebase/firestore'
+import { collection, query, getDocs, where} from 'firebase/firestore'
 import { db } from '../firebase/firebaseConfig'
 import { Select } from '@mantine/core';
+import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [results, setResults] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
 
+  const [id, setId] = useState([]);
+  const [title, setTitle] = useState([]);
+  const [description, setDescription] = useState([]);
+  const [date, setDate] = useState([]);
+  const [url, setURL] = useState([]);
+
   const handleSearch = async () => {
-    try {
-      let q = query(
-        collection(db, "raac-collection"),
-        where("isApprove", "==", true)
-      );
-      
+    // Clean data in the arrays before store new data
+    setId([]);
+    setTitle([]);
+    setDescription([]);
+    setDate([]);
+
+
+      const docRef = collection(db,"raac-collection") 
       if (selectedOption !== "") {
-        q = query(
-          q,
+        const q = query( docRef,
           where("type", "==", selectedOption),
           where("description", ">=", searchQuery),
-          where("description", "<=", searchQuery + "\uf8ff")
         );
-      } else {
-        q = query(
-          q,
-          where("description", ">=", searchQuery),
-          where("description", "<=", searchQuery + "\uf8ff")
-        );
-      }
-    
-      const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map((doc) => {
-        const record = doc.data();
-        return {
-          title: record.title,
-          description: record.description
-        };
-      });
-      setResults(data);
 
-      console.log(searchQuery);
-    } catch (error) {
-      console.error(error);
-      setResults([]);
-    }
+       const doc = await getDocs(q);
+       doc.forEach((doc) => {
+        setId((prev) => [...prev, doc.id])
+        setTitle((prev) => [...prev, doc.data().title])
+        setDescription((prev) => [...prev, doc.data().description])
+        setDate((prev) => [...prev, doc.data().date])
+        setURL((prev) => [...prev, doc.data().url])
+
+       })
+
+
+
+       // Can you implement the default search?
+       // e.g. when the searchQuery does not match anything, display everything match type
+
+       if(doc.size == 0) {
+        console.log("DOES NOT EXIST");
+       }
+
+      } else {
+
+        // this can be another default search when the user just hit enter
+        // e.g. we can display photograph as a default
+        console.log("HELLO");
+      }
   };
 
   const handleOptionChange = (value) => {
@@ -98,7 +107,7 @@ const SearchBar = () => {
             value={searchQuery}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            className='block w-full py-5 text-white rounded-2xl bg-[#1C0A00] border-transparent focus:border-gray-500 focus:ring-0 px-4 py-2 pl-12'
+            className='block w-full py-5 text-white rounded-2xl bg-[#1C0A00] border-transparent focus:border-gray-500 focus:ring-0 px-4 pl-12'
             placeholder='Search...'
           />
           <span className='absolute inset-y-0 right-0 flex items-center px-2'>
@@ -113,6 +122,7 @@ const SearchBar = () => {
                 { value: 'AdvertisementJournal', label: 'Advertisement Journals' },
                 { value: 'ArticleJournal', label: 'Article Journals' },
                 { value: 'ArticleNewspaper', label: 'Article Newspapers' },
+                { value: 'AdvertisementNewspaper', label: 'Advertisement Newspaper' },
                 { value: 'PhotographCommercial', label: 'Photographs' },
                 { value: 'SaleRecord', label: 'Sale Records' },
                 { value: 'SaleBrochure', label: 'Sale Brochures' },
@@ -121,13 +131,39 @@ const SearchBar = () => {
             />
           </span>
         </div>
-        <div className='mt-4'>
-        {results.map((result, index) => (
-            <div key={index} className='mt-10 mb-10'>
-                <div className='text-3xl'>{result.title}</div>
-                <div className='text-2xl mt-5 mx-10'>{result.description}</div>
+        <div>
+          
+          {/* this maps value in the id variable */}
+          { id.map((doc, index) => (
+            <div key={index}>
+
+                  <Card shadow="sm" padding="lg" radius="md" withBorder>
+                        <Card.Section>
+                          <Image
+                            src= {url[index]}
+                            alt="PICTURE"
+                          />
+                        </Card.Section>
+
+                        <Group position="apart" mt="md" mb="xs">
+                          <Text weight={500}>{title[index]}</Text>
+                        </Group>
+
+                        <Text size="sm" color="dimmed">
+                          Description: {description[index]}
+                        </Text>
+
+                        <Text size="sm" color="dimmed">
+                          Date: {date[index]}
+                        </Text>
+
+                  </Card>
+
             </div>
-        ))}
+          )) }
+
+
+
         </div>
       </div>
     </div>
