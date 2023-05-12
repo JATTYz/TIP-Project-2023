@@ -18,12 +18,19 @@ const SearchBar = () => {
         where("isApprove", "==", true)
       );
       
-      if (selectedOption !== '') {
-        q = query(q, where("type", "==", selectedOption), where("description", "==", searchQuery));
-      }
-
-      else {
-        q = query(q, where("description", "==", searchQuery));
+      if (selectedOption !== "") {
+        q = query(
+          q,
+          where("type", "==", selectedOption),
+          where("description", ">=", searchQuery),
+          where("description", "<=", searchQuery + "\uf8ff")
+        );
+      } else {
+        q = query(
+          q,
+          where("description", ">=", searchQuery),
+          where("description", "<=", searchQuery + "\uf8ff")
+        );
       }
     
       const querySnapshot = await getDocs(q);
@@ -35,8 +42,7 @@ const SearchBar = () => {
         };
       });
       setResults(data);
-      // window.location.href = `/search/${searchQuery}`;
-      // navigate(`/search/${searchQuery}`);
+
       console.log(searchQuery);
     } catch (error) {
       console.error(error);
