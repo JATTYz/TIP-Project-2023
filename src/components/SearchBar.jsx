@@ -19,11 +19,11 @@ const SearchBar = () => {
       );
       
       if (selectedOption !== '') {
-        q = query(q, where("type", "==", selectedOption), where("subject", "==", searchQuery));
+        q = query(q, where("type", "==", selectedOption), where("description", "==", searchQuery));
       }
 
       else {
-        q = query(q, where("subject", "==", searchQuery));
+        q = query(q, where("description", "==", searchQuery));
       }
     
       const querySnapshot = await getDocs(q);
@@ -37,6 +37,7 @@ const SearchBar = () => {
       setResults(data);
       // window.location.href = `/search/${searchQuery}`;
       // navigate(`/search/${searchQuery}`);
+      console.log(searchQuery);
     } catch (error) {
       console.error(error);
       setResults([]);
