@@ -5,7 +5,8 @@ import { BiFilter } from 'react-icons/bi';
 import { collection, query, getDocs, where} from 'firebase/firestore'
 import { db } from '../firebase/firebaseConfig'
 import { Select } from '@mantine/core';
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import { Card, Image, Text, Group } from '@mantine/core';
+import { IoIosArrowDown } from 'react-icons/io';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,6 +17,7 @@ const SearchBar = () => {
   const [description, setDescription] = useState([]);
   const [date, setDate] = useState([]);
   const [url, setURL] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSearch = async () => {
     // Clean data in the arrays before store new data
@@ -24,10 +26,10 @@ const SearchBar = () => {
     setDescription([]);
     setDate([]);
 
-
       const docRef = collection(db,"raac-collection") 
       if (selectedOption !== "") {
         const q = query( docRef,
+          where("isApprove", "==", true),
           where("type", "==", selectedOption),
           where("description", ">=", searchQuery),
         );
@@ -42,18 +44,34 @@ const SearchBar = () => {
 
        })
 
-       // Can you implement the default search?
-       // e.g. when the searchQuery does not match anything, display everything match type
-
-       if(doc.size == 0) {
-        console.log("DOES NOT EXIST");
-       }
-
+      if(doc.size == 0) {
+        setErrorMessage("No results found.");
       } else {
+        setErrorMessage("");
+      }
+      
+      } else { // default search for when there is no type selected eg. the category function isn't used
+        const q = query( docRef,
+          where("isApprove", "==", true),
+          where("description", ">=", searchQuery),
+        );
 
-        // this can be another default search when the user just hit enter
-        // e.g. we can display photograph as a default
-        console.log("HELLO");
+        const doc = await getDocs(q);
+        doc.forEach((doc) => {
+         setId((prev) => [...prev, doc.id])
+         setTitle((prev) => [...prev, doc.data().title])
+         setDescription((prev) => [...prev, doc.data().description])
+         setDate((prev) => [...prev, doc.data().date])
+         setURL((prev) => [...prev, doc.data().url])
+        })
+
+        if(doc.size == 0) {
+          setErrorMessage("No results found.");
+        }
+        else {
+          setErrorMessage("");
+        }
+        
       }
   };
 
@@ -78,18 +96,23 @@ const SearchBar = () => {
     <div className='grid grid-cols-6'>
       <span className='col-span-1' />
 
-      <div className='col-span-1'>
-        <img
-          className='pr-10 my-10'
-          src='/rccabadge.png'
-          alt='rcca-badge'
-        />
-      </div>
-
-      <div className='col-span-3'>
-        <div className='text-6xl mt-20 pl-5'>Rover Car Club of Australia</div>
-        <div className='text-3xl pl-40 pt-5'>
+      <div className='col-span-4 text-center'>
+        <div className='flex inline-flex'>
+          <Image
+            className='pr-7 mt-10'
+            src='/rccabadge.png'
+            alt='rcca-badge'
+            maw={125} 
+          />
+          <div className='text-6xl mt-14'>
+            Rover Car Club of Australia
+          </div>
+        </div>
+        <div className='text-3xl'>
           Explore our Historical Records
+        </div>
+        <div className='flex justify-center pt-2'>
+          <IoIosArrowDown className='text-5xl'/>
         </div>
       </div>
 
@@ -133,8 +156,11 @@ const SearchBar = () => {
 
     <div className='col-span-6'>
       <div className='grid grid-cols-3 px-20 gap-5'>
-        {/* this maps value in the id variable */}
-        { id.map((doc, index) => (          
+      {/* mapping query results to cards unless there is no results then show error msg*/}
+      { errorMessage != "" ? (
+        <div className='text-center pl-40 text-red-500'>{errorMessage}</div>
+      ) : (
+        id.map((doc, index) => (          
           <div key={index} className='col-span-1'>
               <Card shadow="sm" padding="lg" radius="md" withBorder>
                     <Card.Section>
@@ -159,7 +185,7 @@ const SearchBar = () => {
                     </Text>
               </Card>
           </div>
-          )) }
+          )))}
         </div>
       </div>
     </div>
