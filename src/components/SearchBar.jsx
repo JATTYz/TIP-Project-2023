@@ -42,8 +42,6 @@ const SearchBar = () => {
 
        })
 
-
-
        // Can you implement the default search?
        // e.g. when the searchQuery does not match anything, display everything match type
 
@@ -131,39 +129,37 @@ const SearchBar = () => {
             />
           </span>
         </div>
-        <div>
-          
-          {/* this maps value in the id variable */}
-          { id.map((doc, index) => (
-            <div key={index}>
+      </div>
 
-                  <Card shadow="sm" padding="lg" radius="md" withBorder>
-                        <Card.Section>
-                          <Image
-                            src= {url[index]}
-                            alt="PICTURE"
-                          />
-                        </Card.Section>
+    <div className='col-span-6'>
+      <div className='grid grid-cols-3 px-20 gap-5'>
+        {/* this maps value in the id variable */}
+        { id.map((doc, index) => (          
+          <div key={index} className='col-span-1'>
+              <Card shadow="sm" padding="lg" radius="md" withBorder>
+                    <Card.Section>
+                      <Image
+                        src= {url[index]}
+                        alt="PICTURE"
+                        width={480} 
+                        height={400}
+                      />
+                    </Card.Section>
 
-                        <Group position="apart" mt="md" mb="xs">
-                          <Text weight={500}>{title[index]}</Text>
-                        </Group>
+                    <Group position="apart" mt="md" mb="xs">
+                      <Text fw={500} >{title[index]}</Text>
+                    </Group>
 
-                        <Text size="sm" color="dimmed">
-                          Description: {description[index]}
-                        </Text>
+                    <Text size="sm">
+                      Date: {date[index]}
+                    </Text>
 
-                        <Text size="sm" color="dimmed">
-                          Date: {date[index]}
-                        </Text>
-
-                  </Card>
-
-            </div>
+                    <Text size="sm">
+                      Description: {description[index]}
+                    </Text>
+              </Card>
+          </div>
           )) }
-
-
-
         </div>
       </div>
     </div>
