@@ -97,6 +97,9 @@ const SaleBrochure = () => {
   }
 
   const handleSubmit = (e) => {
+
+  if (title && rights && publisher && language && description && file) {
+
    e.preventDefault()
    uploadImage()
    console.log(title);
@@ -105,6 +108,14 @@ const SaleBrochure = () => {
    console.log(language);
    console.log(description);
    console.log(file);
+
+
+   alert("Successfully uploaded the data!");
+  } else {
+    // Display an error message if required fields are empty
+    alert("Please fill in all the required fields.");
+  }
+
   }
 
 

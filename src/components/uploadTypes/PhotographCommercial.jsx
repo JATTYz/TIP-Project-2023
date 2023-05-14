@@ -101,6 +101,9 @@ const PhotographCommercial = () => {
   }
 
   const handleSubmit = (e) => {
+
+  if (title && source && date && creater && rights && language && file) {
+
    e.preventDefault()
    uploadImage()
    console.log(title);
@@ -110,6 +113,14 @@ const PhotographCommercial = () => {
    console.log(rights);
    console.log(language);
    console.log(file);
+
+
+   alert("Successfully uploaded the data!");
+  } else {
+    // Display an error message if required fields are empty
+    alert("Please fill in all the required fields.");
+  }
+
   }
 
   return (

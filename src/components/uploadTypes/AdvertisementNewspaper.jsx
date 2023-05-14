@@ -94,7 +94,10 @@ const AdvertisementNewspaper = () => {
    setFile(e.target.files[0])
   }
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = (e) => {  
+  if (coverage && title && date && contribution && description && file) {
+
    e.preventDefault()
    uploadImage()
    console.log(coverage);
@@ -103,6 +106,14 @@ const AdvertisementNewspaper = () => {
    console.log(contribution);
    console.log(description);
    console.log(file);
+
+
+   alert("Successfully uploaded the data!");
+  } else {
+    // Display an error message if required fields are empty
+    alert("Please fill in all the required fields.");
+  }
+
   }
 
   return (
