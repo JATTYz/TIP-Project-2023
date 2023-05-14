@@ -10,6 +10,7 @@ const PhotographCommercial = () => {
   const [creater, setCreater] = useState()
   const [rights, setRights] = useState()
   const [language, setLanguage] = useState()
+  const [description, setDescription] = useState()
   const [file, setFile] = useState()
 
 
@@ -65,6 +66,7 @@ const PhotographCommercial = () => {
        creater: creater,
        rights: rights,
        language: language,
+       description: description,
        isApprove: false,
        isPending: true,
        url: url
@@ -96,13 +98,17 @@ const PhotographCommercial = () => {
     setLanguage(e.target.value)
    }
 
+  const handleDescription = (e) => {
+    setDescription(e.target.value)
+  }
+
   const handleFileChange = (e) => {
    setFile(e.target.files[0])
   }
 
   const handleSubmit = (e) => {
 
-  if (title && source && date && creater && rights && language && file) {
+  if (title && source && date && creater && rights && language && file && description) {
 
    e.preventDefault()
    uploadImage()
@@ -205,6 +211,18 @@ const PhotographCommercial = () => {
               type="text"
               name="Language"
               onChange={handleLanguage}
+            />
+          </div>
+
+          <div className="w-full  px-3 mt-4">
+            <label className="block uppercase tracking-wide text-rv100 text-sm font-bold mb-2" htmlFor="Description">
+              Description
+            </label>
+            <textarea
+              className="appearance-none block w-full bg-[#C6ACB5] text-white border border-rv100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-[C6ACB5] focus:border-rv100"
+              id="Description"
+              name="Description"
+              onChange={handleDescription}
             />
           </div>
 
