@@ -101,7 +101,9 @@ const ArticleNewspaper = () => {
   }
 
   const handleSubmit = (e) => {
+
   if (title && source && subject && date && contribution && language && file) {
+
    e.preventDefault()
    uploadImage()
    console.log(title);
@@ -112,11 +114,13 @@ const ArticleNewspaper = () => {
    console.log(language);
    console.log(file);
 
+
    alert("Successfully uploaded the data!");
   } else {
     // Display an error message if required fields are empty
     alert("Please fill in all the required fields.");
   }
+
   }
 
   return (

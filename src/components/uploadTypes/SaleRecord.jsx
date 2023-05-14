@@ -96,7 +96,9 @@ const SaleRecord = () => {
   }
 
   const handleSubmit = (e) => {
+
   if (format && relation && rights && language && description && file) {
+
    e.preventDefault()
    uploadImage()
    console.log(format);
@@ -106,11 +108,13 @@ const SaleRecord = () => {
    console.log(description);
    console.log(file);
 
+
    alert("Successfully uploaded the data!");
   } else {
     // Display an error message if required fields are empty
     alert("Please fill in all the required fields.");
   }
+
   }
 
   return (

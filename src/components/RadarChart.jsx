@@ -19,11 +19,11 @@ ChartJS.register(
   Legend
 );
 const data = {
-  labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
+  labels: ['PhotographCommercial', 'SalesRecord', 'SalesBrochure', 'BookTechnical', 'AritcleNewspaper', 'AdvertisementJournal'],
   datasets: [
     {
-      label: '# of Votes',
-      data: [3, 7, 3, 5, 2, 3],
+      label: 'Uploaded document trend',
+      data: [40, 70, 30, 50, 20, 30],
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgba(255, 99, 132, 1)',
       borderWidth: 2,

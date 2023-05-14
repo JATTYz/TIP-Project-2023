@@ -95,7 +95,9 @@ const AdvertisementJournal = () => {
   }
 
   const handleSubmit = (e) => {
+
   if (format && subject && publisher && date && contribution && file) {    
+
    e.preventDefault()
    uploadImage()
    console.log(format);
@@ -104,11 +106,13 @@ const AdvertisementJournal = () => {
    console.log(date);
    console.log(contribution);
    console.log(file);
+
    alert("Successfully uploaded the data!");
   } else {
     // Display an error message if required fields are empty
     alert("Please fill in all the required fields.");
   }
+
   }
 
   return (
