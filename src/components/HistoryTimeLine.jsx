@@ -1,4 +1,5 @@
 import { Timeline, Text, Image, Anchor } from '@mantine/core';
+
 import { GiDeathStar } from 'react-icons/gi';
 import { HiBadgeCheck } from 'react-icons/hi';
 import { MdDirectionsCar } from 'react-icons/md';
@@ -9,18 +10,23 @@ import { VscInspect } from 'react-icons/vsc';
 const HistoryTimeLine = () => {
     return (
         <Timeline active={3} bulletSize={24} lineWidth={2}>
+
             <Timeline.Item bullet={<GiDeathStar size={12} />} title="Collapse of MG Rover">
                 <Text size="sm" mt={4} fs="italic">2005</Text>
                 <Text size="sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quos, non minima unde delectus harum illum est neque. Repellat, distinctio explicabo tempora fugiat neque laborum quod consequatur hic possimus in!</Text>
+
             </Timeline.Item> 
 
             <Timeline.Item bullet={<RiAuctionFill size={12} />} title="MG Rover Australia Administrators Auction">
                 <Text size="sm" mt={4} fs="italic">13 June 2005</Text>
+
                 <Text size="sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque accusamus id, enim sit asperiores vitae delectus magnam, minima harum molestiae eos reprehenderit temporibus nam architecto eius provident totam perspiciatis ad.</Text>
+
             </Timeline.Item>
 
             <Timeline.Item bullet={<GiGlassCelebration size={12} />} title="Rover 100th Anniversary">
                 <Text size="sm" mt={4} fs="italic">01 December 2004</Text>
+
                 <Text size="sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil voluptatum odio corrupti nulla consequatur totam, enim odit accusantium error aut debitis quo eos reprehenderit temporibus incidunt qui quae iste! Optio.</Text>
             </Timeline.Item>
 
@@ -61,6 +67,7 @@ const HistoryTimeLine = () => {
                 </Text>
                 <Image maw={400} mx="auto" my={10} radius="md" src='/car4.jpg' alt='car-image-placeholder'/>
                 <p className='mb-10 text-center'><Anchor href="https://en.wikipedia.org/wiki/Rover_12" target="_blank">Image Source</Anchor></p>
+
             </Timeline.Item>
 
         </Timeline>
