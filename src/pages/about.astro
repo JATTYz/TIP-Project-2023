@@ -2,8 +2,7 @@
 import Header from '../components/Header.jsx';
 import Layout from '../layouts/Layout.astro';
 import carImg from '../../public/carImg.jpg';
-import Paragraph from '../components/Paragraph';
-import ParagraphTexts from '../components/ParahraphTexts.jsx';
+
 
 const FirstLetterClasses = "first-letter:text-8xl first-letter:pr-4 first-letter:float-left first-letter:font-serif mb-8";
 
@@ -12,109 +11,16 @@ const FirstLetterClasses = "first-letter:text-8xl first-letter:pr-4 first-letter
 <Layout title="Welcome to Astro.">
 	<Header />
 	<div class="flex items-center justify-center">
-		<div class="px-10  text-3xl w-4/5 flex items-center justify-center flex-col	">
-			<h1 class=" my-16 font-semibold uppercase text-5xl text-center font-serif	">ABOUT THE ROVER CAR CLUB OF AUSTRALIA</h1>
-			<div class="w-9/12 ">
-				<img src={carImg} alt="" class="h-1/4">
-				<h1 class="text-4xl font-semibold text-center my-16">Who Are We, and What Do We Offer a Member?</h1>
-				<div class="font-normal text-xl">
-
-					<Paragraph texts ={ParagraphTexts.S1_Paragraph1} classNames={FirstLetterClasses}  />
-					<Paragraph texts ={ParagraphTexts.S1_Paragraph2} classNames='mb-8'  />
-					<Paragraph texts ={ParagraphTexts.S1_Paragraph3} classNames='mb-8'  />
-					<Paragraph texts ={ParagraphTexts.S1_Paragraph4} classNames='mb-8'  />
-					<Paragraph texts ={ParagraphTexts.S1_Paragraph5} classNames='mb-8'  />
-					
-
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8">Benefits To Financial Members</h1>
-
-					<ul class="ml-8 list-disc">
-						<li class="mb-4 font-serif  font-medium	"><a href="#CEMM" class="text-red-600 hover:underline	"> Club Events & Monthly Meetings </a> </li>
-						<li class="mb-4 font-serif  font-medium	"><a href="#CM" class="text-red-600 hover:underline	"> Car Mart </a> </li>
-						<li class="mb-4 font-serif  font-medium	"><a href="#Affiliations" class="text-red-600 hover:underline	"> Affiliations </a> </li>
-						<li class="mb-4 font-serif  font-medium	"><a href="#VCPS" class="text-red-600 hover:underline	"> VicRoads Club Plate Scheme </a> </li>
-						<li class="mb-4 font-serif  font-medium	"><a href="#SPR" class="text-red-600 hover:underline	"> Spare Parts & Regalia </a> </li>
-						<li class="mb-4 font-serif  font-medium	"><a href="#CL" class="text-red-600 hover:underline	"> Club Library </a> </li>
-						<li class="mb-4 font-serif  font-medium	"><a href="#CP" class="text-red-600 hover:underline	"> Club Publications </a> </li>
-						<li class="mb-4 font-serif  font-medium	"><a href="#IEDG" class="text-red-600 hover:underline	"> Internet Email Discussion Group </a> </li>
-					</ul>
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8" id="CEMM">Club Events & Monthly Meetings</h1>
-
-					<Paragraph texts ={ParagraphTexts.S2_Paragraph1} classNames={FirstLetterClasses}  />
-					<Paragraph texts ={ParagraphTexts.S2_Paragraph2} classNames='mb-8'  />
-					<ul class="mb-8">
-						<li class="mb-4">Uniting Church Hall</li>
-						<li class="mb-4">Entrance off Hepburn Street</li>
-						<li class="mb-4">Hawthorn</li>
-						<li class="mb-4">Melways Ref. 45F11</li>
-					</ul>
-					<Paragraph texts ={ParagraphTexts.S2_Paragraph3} classNames='mb-8'  />
-					<Paragraph texts ={ParagraphTexts.S2_Paragraph4} classNames='mb-8'  />
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8" id="CM">Cars For Sale and Wanted – Car Mart</h1>
-					<Paragraph texts ={ParagraphTexts.S3_Paragraph1} classNames={FirstLetterClasses}  />
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8" id="Affiliations">Affiliations</h1>
-					<Paragraph texts ={ParagraphTexts.S4_Paragraph1} classNames={FirstLetterClasses}  />
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8" id="VCPS">VicRoads Club Plate Scheme</h1>
-					<Paragraph texts ={ParagraphTexts.S5_Paragraph1} classNames={FirstLetterClasses}  />
-					<Paragraph texts ={ParagraphTexts.S5_Paragraph2} classNames='mb-8'  />
-
-					<p class="mb-8"> <span class="font-bold"> Prospective Members  </span> please note that the following rules apply to the issuing of Club Permits to Financial Members:</p>
-
-					<ul class="mb-8 ml-8 list-disc">
-						<li class="mb-4">
-							Club Permits are to be available only to those who have been a member of the RCCA for a minimum of 3 months. The Committee will however consider applications under the 3 month period based on their merit. Such special applications may include, but not be limited to, such reasons as returning lapsed members or people moving from interstate.
-						</li>
-						<li class="mb-4">
-							Club Permits will only be approved for Rover vehicles. The Committee will however consider applications for a non-Rover to be granted a Club Permit if the owner already has, and continues to have, at least one Rover on a Club Permit.
-						</li>
-					</ul>
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8" id="SPR">Spare Parts & Club Regalia</h1>
-					<Paragraph texts ={ParagraphTexts.S6_Paragraph1} classNames={FirstLetterClasses}  />
-					<Paragraph texts ={ParagraphTexts.S6_Paragraph2} classNames='mb-8'  />
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8" id="CL">Club Library</h1>
-					<Paragraph texts ={ParagraphTexts.S7_Paragraph1} classNames={FirstLetterClasses}  />
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8" id="CP">Club Publications</h1>
-					<Paragraph texts ={ParagraphTexts.S8_Paragraph1} classNames={FirstLetterClasses}  />
-					<Paragraph texts ={ParagraphTexts.S8_Paragraph2} classNames='mb-8'  />
-					<Paragraph texts ={ParagraphTexts.S8_Paragraph3} classNames='mb-8'  />
-					<Paragraph texts ={ParagraphTexts.S8_Paragraph4} classNames='mb-8'  />
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8" id="IEDG">Internet Discussion Group</h1>
-					<Paragraph texts ={ParagraphTexts.S9_Paragraph1} classNames={FirstLetterClasses}  />
-
-					<!-- STARTING NEW SECTION  -->
-					<hr class="w-14	my-16 mx-auto">
-					<h1 class="text-4xl font-semibold  mb-8">Club Founders</h1>
-					<p class={FirstLetterClasses}>
-						<span class="font-bold block mb-4"> George Gosbell and Ron Creber </span>
-						We recognise the passing of our Dear Friend, Founding Father and Life Member of the Rover Car Club of Australia George Gosbell in September 2020. George, together with the late Ron Creber, were responsible for getting the Car Club formed in 1964, and George proudly held the Membership Number One. George was particularly keen on the Rover P6, he had many over the years, and pleased to say, many are still with Rover Club Members.
-					</p>
-
-				</div>
+		<div class="px-10  text-3xl w-11/12	 flex items-center justify-center flex-col">
+			<h1 class=" my-8 font-semibold uppercase text-2xl text-center ">ABOUT THE ROVER CAR CLUB OF AUSTRALIA</h1>
+			<div class="w-9/12 flex	align-center justify-center">
+				<img src={carImg} alt="" class=" w-5/12	mb-8">
+				
+			</div>
+			<div class="font-normal text-xl mb-4">
+				<p class="lowercase	">
+				<span class="uppercase">T</span>he Rover Car Club of Australia (RCCA), founded in 1964, is composed of approximately 250 members mainly from Victoria and Tasmania, owning Rovers from various models sold in Australia, including the P3, P4, P5, P6, SD1, SEII, Quintets, 416s, and 800 series, up until the Rover 75 and MGZT series. With a strong member base, the club ensures the availability of spare parts, and technical officers provide advice on car problems. The club is operated by volunteers, and liaisons with other Rover car clubs in Australia and overseas are maintained to ensure the stocking of otherwise unobtainable items.
+				</p>
 			</div>
 		</div>
 	</div>

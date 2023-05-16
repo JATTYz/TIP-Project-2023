@@ -1,20 +1,14 @@
 ---
 import Header from '../components/Header.jsx';
-import ContactForm from '../components/ContactForm';
-import Share from '../components/Share';
 import Layout from '../layouts/Layout.astro';
 // import { FacebookShareButton, TwitterShareButton } from "react-share";
 
-const Secretary = 'secretary.rcca@gmail.com'
-const carSales = 'carmart@rovercarclubaust.asn.au'
-const membership = 'membership@rovercarclubaust.asn.au'
-const spareParts = 'spare.parts@rovercarclubaust.asn.au'
-const websiteEmail = 'webmaster.rovercarclubaust@gmail.com'
+const contactus = 'str_akbari@yahoo.com'
 const websiteUrl = "http://rovercarclubaust.asn.au";
 
 
 const greeting: String = "Contact Us";
-const emails = ["secretary.rcca@gmail.com", "info@example.com", "support@mywebsite.com"];
+const emails = ["str_akbari@yahoo.com"];
 
 ---
 
@@ -24,37 +18,40 @@ const emails = ["secretary.rcca@gmail.com", "info@example.com", "support@mywebsi
 	<div>
 		<div class="px-10 flex column justify-center">
 			<div class="main-container w-1/8">
-				<h1 class="my-16 text-center text-6xl uppercase font-serif sm:text-4xl leading-normal font-extrabold text-green-600 tracking-wide">Contact <span class="text-indigo-900">Us</span>  </h1>
-				<h2 class="font-bold mb-4">Contact Details for Rover Car Club of Australia Inc</h2>
-				<p class="mb-8">By Email, you can contact Club Officers on following email addresses:</p>
-					<div class="Emails mb-8 flex flex-wrap">
-						<a class="rounded-lg mr-4 px-4 py-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-blue-100 duration-300" href={"mailto:"+Secretary}>Secretary</a>	
-						<a class="rounded-lg mr-4 px-4 py-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-blue-100 duration-300" href={"mailto:"+carSales}>Car Sales(Car Mart)</a>	
-						<a class="rounded-lg mr-4 px-4 py-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-blue-100 duration-300" href={"mailto:"+membership}>Membership</a>	
-						<a class="rounded-lg mr-4 px-4 py-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-blue-100 duration-300" href={"mailto:"+spareParts}>Spare Parts</a>	
-						<a class="rounded-lg mr-4 px-4 py-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-blue-100 duration-300" href={"mailto:"+websiteEmail }>Website</a>	
-					</div>	
+				<h1 class="my-16 text-center text-6xl uppercase sm:text-4xl leading-normal font-extrabold text-[#1C0A00] tracking-wide">Contact Us  </h1>
 				
-				<Share description={"this is a basic share page"}/>
-
 				<h2 class="font-bold mt-16">By Post</h2>
 				<p class="mt-4 text-lg">
 					Rover Car Club of Australia Inc <br>
 					Please Note new Post Office Box: <br>
 				</p>
+
 				<p class="mt-4 text-lg font-bold">
 					PO Box 6049 <br>
 					WANTIRNA VIC 3152 <br>
 				</p>
 				
 				<h2 class="font-bold mt-16">By Telephone</h2>
+
 				<p class="mt-4 text-lg">
 					All queries mobile phone no: 0431 858 582 (Within Australia) <br>
 					Please be considerate of the time you call.<br>
+					<br>
+					<br>
 				</p>
+
+
+
+				<h2 class="font-bold mb-4">Email Details for Rover Car Club of Australia Inc</h2>
+
+				<p class="mb-8">Please feel free to contact us for any inquiries and feedbacks:</p>
+					<div class="Emails mb-8 flex flex-wrap">
+						<a class="px-6 py-2 mt-4 text-white bg-[#361500] rounded-lg hover:bg-[#1C0A00] mr-4" href={"mailto:"+contactus}>Contact Us</a>	
+
+					</div>	
 				
 
-				<ContactForm />
+				
 			</div>
 		</div>
 	</div>
