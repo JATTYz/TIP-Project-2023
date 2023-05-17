@@ -1,15 +1,42 @@
 ---
-import Header from '../components/Header';
-import LoginTemplate from '../components/LoginTemplate';
-import Test from '../components/Test';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/firebaseConfig.js";
+import WarningAccess from "../components/WarningAccess.jsx";
 
+let s: boolean;
+ const a = new Promise<void>((resolve) => {
+
+        onAuthStateChanged(auth, (user) => {
+                if (user != null) {
+
+                        console.log("NULL");
+                        s = true
+                }else{
+                        console.log("notnull");
+                        s = false
+                }
+        });
+
+ }) 
+
+ async function getValue() {
+        await a
+        // console.log(s.valueOf.toString);
+        return s
+        
+ }
+ getValue()
 ---
 <!-- DONT' DELETE THIS FILE, I USE FOR TEST DATA -->
-
+        <!-- {s ? <div>aaa</div>: <h1>fff</h1>} -->
 	<div>
-        <Header />
+              <!-- <WarningAccess client:load /> -->
+              <!-- <h1>{c}</h1> -->
+              <h1>HELLO</h1>
+              
         <!-- <LoginTemplate /> -->
         <!-- <Test client:load /> -->
         <!-- <DialogTest client:load/> -->
+        
 	</div>
    

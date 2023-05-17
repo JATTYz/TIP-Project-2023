@@ -3,7 +3,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import React, {useState,useEffect} from "react";
 import LoginForm from "./signin.jsx";
 import Header from "./Header.jsx";
-import LogoutButton from "./logout.jsx";
 
 const LoginCheck =()=> {
     //const [isLoading, setIsLoading] = useState(true);
@@ -12,18 +11,12 @@ const LoginCheck =()=> {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setIsAuthenticated(true);
-                alert("welcome " + user.email);
+                // alert("welcome " + user.email);
             } else {
                 setIsAuthenticated(false);
-                //alert("please login, redirect to login page");
-                //window.location.replace("/login");
             }
         });
-        //setIsLoading(false);
     },[]);
-    //if(isLoading) {
-        //return <div>Loading...</div>;
-    //}
     if(isAuthenticated)
         return <div className="px-10 text-3xl">
             <h1 className="text-center text-cyan-700 py-14">Admin Dashboard</h1>
