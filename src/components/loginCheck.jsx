@@ -12,7 +12,7 @@ const LoginCheck =()=> {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setIsAuthenticated(true);
-                alert("welcome " + user.email);
+                // alert("welcome " + user.email);
             } else {
                 setIsAuthenticated(false);
             }
