@@ -14,7 +14,7 @@ function LoginForm() {
             (userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
-                window.location.replace("/admin");
+                window.location.replace("/admin/approval");
             }
         ).catch(e => {
             window.alert("WRONG USERNAME OR PASSWORD");

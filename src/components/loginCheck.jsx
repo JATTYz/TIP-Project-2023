@@ -15,15 +15,9 @@ const LoginCheck =()=> {
                 alert("welcome " + user.email);
             } else {
                 setIsAuthenticated(false);
-                //alert("please login, redirect to login page");
-                //window.location.replace("/login");
             }
         });
-        //setIsLoading(false);
     },[]);
-    //if(isLoading) {
-        //return <div>Loading...</div>;
-    //}
     if(isAuthenticated)
         return <div className="px-10 text-3xl">
             <h1 className="text-center text-cyan-700 py-14">Admin Dashboard</h1>
