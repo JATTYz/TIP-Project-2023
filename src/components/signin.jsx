@@ -13,7 +13,7 @@ function LoginForm() {
 
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
-            window.location.replace("/admin");
+            window.location.replace("/admin/approval");
             })
             .catch((e) => {
             setErrorMessage('Invalid Login!');
