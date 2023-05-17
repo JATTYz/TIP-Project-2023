@@ -1,26 +1,27 @@
 ---
 import Header from '../components/Header.jsx';
 import Layout from '../layouts/Layout.astro';
-import carImg from '../../public/carImg.jpg';
-
-
-const FirstLetterClasses = "first-letter:text-8xl first-letter:pr-4 first-letter:float-left first-letter:font-serif mb-8";
-
 ---
 
 <Layout title="Welcome to Astro.">
 	<Header />
-	<div class="flex items-center justify-center">
-		<div class="px-10  text-3xl w-11/12	 flex items-center justify-center flex-col">
-			<h1 class=" my-8 font-semibold uppercase text-2xl text-center ">ABOUT THE ROVER CAR CLUB OF AUSTRALIA</h1>
-			<div class="w-9/12 flex	align-center justify-center">
-				<img src={carImg} alt="" class=" w-5/12	mb-8">
-				
-			</div>
-			<div class="font-normal text-xl mb-4">
-				<p class="lowercase	">
-				<span class="uppercase">T</span>he Rover Car Club of Australia (RCCA), founded in 1964, is composed of approximately 250 members mainly from Victoria and Tasmania, owning Rovers from various models sold in Australia, including the P3, P4, P5, P6, SD1, SEII, Quintets, 416s, and 800 series, up until the Rover 75 and MGZT series. With a strong member base, the club ensures the availability of spare parts, and technical officers provide advice on car problems. The club is operated by volunteers, and liaisons with other Rover car clubs in Australia and overseas are maintained to ensure the stocking of otherwise unobtainable items.
-				</p>
+
+	<div class='grid grid-cols-6'>
+		<div class='col-span-6'>
+			<img
+			class='mb-10 w-full h-48 object-cover overflow-hidden shadow-lg'
+			src='/banner-history.png'
+			alt='banner-history'
+			/>
+		</div>
+		
+		<div class='col-span-6'>
+			<div class='text-6xl text-center font-bold mb-10'>About Us</div>
+		</div> 
+
+		<div class='col-span-6'>
+			<div class='mx-20 text-center text-lg'>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem a et autem saepe eaque iure corporis repudiandae velit, consequatur ducimus accusamus asperiores. Natus odio, optio laborum ipsa tenetur vitae iure?
 			</div>
 		</div>
 	</div>
