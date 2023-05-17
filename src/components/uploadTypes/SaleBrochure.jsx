@@ -22,7 +22,7 @@ const SaleBrochure = () => {
        
        if (file == null) return;
        const imageRef = ref(storage, `images/${file.name + "TIPg2-2023"}`)
-       const uploadTask = uploadBytesResumable(imageRef, file, metadata);
+       const uploadTask = uploadBytesResumable(imageRef, file, file.type);
 
        uploadTask.on('state_change', (snapshot) => {
 

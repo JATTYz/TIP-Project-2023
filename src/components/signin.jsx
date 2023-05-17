@@ -8,7 +8,6 @@ function LoginForm() {
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleLogin =  () => {
-
         errorMessage && setErrorMessage('');
         const { email, password } = form.values;
 

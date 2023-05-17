@@ -13,15 +13,12 @@ const AdvertisementNewspaper = () => {
 
 
 
-   const metadata = {
-     contentType: 'image/jpeg'
-   };
-
    const uploadImage = () => {
        
        if (file == null) return;
+       
        const imageRef = ref(storage, `images/${file.name + "TIPg2-2023"}`)
-       const uploadTask = uploadBytesResumable(imageRef, file, metadata);
+       const uploadTask = uploadBytesResumable(imageRef, file, file.type);
 
        uploadTask.on('state_change', (snapshot) => {
 
@@ -100,13 +97,6 @@ const AdvertisementNewspaper = () => {
 
    e.preventDefault()
    uploadImage()
-   console.log(coverage);
-   console.log(title);
-   console.log(date);
-   console.log(contribution);
-   console.log(description);
-   console.log(file);
-
 
    alert("Successfully uploaded the data!");
   } else {
