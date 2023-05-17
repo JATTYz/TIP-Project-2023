@@ -6,8 +6,6 @@ import { ImNewspaper } from 'react-icons/im'
 import { HiPhotograph } from 'react-icons/hi'
 import { FaMap } from 'react-icons/fa'
 import { FaRecordVinyl } from 'react-icons/fa'
-import { Card } from '@mantine/core'
-
 
 const Upload = () => {
 
