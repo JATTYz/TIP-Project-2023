@@ -13,9 +13,7 @@ function LoginForm() {
         const { email, password } = form.values;
 
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
+            .then(() => {
             window.location.replace("/admin");
             })
             .catch((e) => {
