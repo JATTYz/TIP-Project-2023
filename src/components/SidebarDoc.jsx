@@ -38,13 +38,13 @@ const SidebarDoc = () => {
               open && "rotate-[360deg]" 
             } w-20`}
           />
-          <h1
+          {/* <h1
             className={`text-white origin-left font-bold text-2xl duration-200 ${
               !open && "scale-0"
             }`}
           >
             Admin Dashboard
-          </h1>
+          </h1> */}
         </div>
         <ul className="pt-6 sticky top-0">
           {Menus.map((Menu, index) => (
