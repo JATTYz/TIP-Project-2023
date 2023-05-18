@@ -24,6 +24,7 @@ const Sidebar = () => {
     { title: "Analytics", src: "analytics" , path: "#section-2"},
     { title: "Upload Document", src: "upload", path:"/upload"},
     { title: "All Documents", src: "folders", path:"/admin/documents"},
+
   ];
   
 
