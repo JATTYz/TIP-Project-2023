@@ -191,7 +191,7 @@ const ApprovalTable = () => {
                 <div className="text-xl font-extrabold text-gray-300 ">Recent Uploaded</div>
               </div>
                 <div className="flex items-center pt-1">
-                    <div className="text-2xl font-bold  text-gray-100 pt-4">28/04/2023</div>
+                   <div className="text-2xl font-bold  text-gray-100 pt-4">19/05/2023</div>
                 </div>
             </div>
         </div>
