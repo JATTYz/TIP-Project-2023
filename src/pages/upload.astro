@@ -2,15 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header';
 import Upload from '../components/Upload';
-import  { storage } from "../firebase/firebaseConfig";
-import {  ref } from "firebase/storage";
-import Test from '../components/Test';
-
-
-
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Upload">
 	<Header />
 	<div>
         <Upload client:load/>

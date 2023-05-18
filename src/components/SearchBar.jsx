@@ -7,6 +7,7 @@ import { db } from '../firebase/firebaseConfig'
 import { Select } from '@mantine/core';
 import { Card, Image, Text, Group } from '@mantine/core';
 import { IoIosArrowDown } from 'react-icons/io';
+import { MdCloudUpload } from 'react-icons/md';
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -176,12 +177,12 @@ const SearchBar = () => {
                       <Text fw={500} >{title[index]}</Text>
                     </Group>
 
-                    <Text size="sm">
-                      Date: {date[index]}
+                    <Text size="sm" mb="xs">
+                      <MdCloudUpload className="inline-block text-lg mr-1" /> Upload Date: {date[index]}
                     </Text>
 
-                    <Text size="sm">
-                      Description: {description[index]}
+                    <Text size="sm" >
+                      {description[index]}
                     </Text>
               </Card>
           </div>
