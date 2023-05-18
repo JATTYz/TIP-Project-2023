@@ -178,7 +178,7 @@ const ApprovalTable = () => {
             <div className="p-5  rounded-lg  bg-[#361500] w-48  shadow-lg shadow-amber-950">
               <div className="flex">
                 <img src="../../public/pending.png" className="w-14  h-12 mr-4" />
-                <div className="text-xl dark:text-gray-300 font-extrabold">Total Pending</div>
+                <div className="text-xl text-gray-300 font-extrabold">Total Pending</div>
               </div>
                 <div className="items-center pt-1">
                     <div className="text-2xl font-bold  text-gray-100 pt-4">{ id.length == 0 ? 0 : id.length}</div>

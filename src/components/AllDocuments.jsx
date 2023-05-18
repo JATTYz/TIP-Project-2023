@@ -190,7 +190,7 @@ const AllDocuments = () => {
               <th scope="col" className="px-6 py-4">#Doc</th>
               <th scope="col" className="px-6 py-4">Type</th>
               <th scope="col" className="px-6 py-4">Title</th>
-              <th scope="col" className="px-6 py-4">Description</th>
+              {/* <th scope="col" className="px-6 py-4">Description</th> */}
               <th scope="col" className="px-6 py-4">Date</th>
               <th scope="col" className="px-6 py-6">Download</th>
             </tr>
@@ -204,7 +204,7 @@ const AllDocuments = () => {
               <td className="whitespace-nowrap px-6 py-4 font-medium">{index + 1}</td>
               <td className="whitespace-nowrap px-6 py-4">{type[index]}</td>
               <td className="whitespace-nowrap px-6 py-4">{title[index]}</td>
-              <td className="whitespace-nowrap px-6 py-4">{description[index]}</td>
+              {/* <td className="whitespace-nowrap px-6 py-4">{description[index]}</td> */}
               <td className="whitespace-nowrap px-6 py-4">{date[index]}</td>
               <td className="whitespace-nowrap px-6 py-4">
                 <button
