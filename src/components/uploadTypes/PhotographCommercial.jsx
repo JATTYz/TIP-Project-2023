@@ -13,8 +13,6 @@ const PhotographCommercial = () => {
   const [description, setDescription] = useState()
   const [file, setFile] = useState()
 
-
-
    const metadata = {
      contentType: 'image/jpeg'
    };
@@ -112,14 +110,6 @@ const PhotographCommercial = () => {
 
    e.preventDefault()
    uploadImage()
-   console.log(title);
-   console.log(source);
-   console.log(date);
-   console.log(creater);
-   console.log(rights);
-   console.log(language);
-   console.log(file);
-
 
    alert("Successfully uploaded the data!");
   } else {

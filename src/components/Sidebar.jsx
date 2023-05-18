@@ -23,6 +23,8 @@ const Sidebar = () => {
     { title: "Document Approval", src: "documentation", path:"#section-1" },
     { title: "Analytics", src: "analytics" , path: "#section-2"},
     { title: "Upload Document", src: "upload", path:"/upload"},
+    { title: "All Documents", src: "folders", path:"/admin/documents"},
+
   ];
   
 
@@ -127,7 +129,7 @@ const Sidebar = () => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Approve this document?"}
+          {"Unable to access admin page"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">

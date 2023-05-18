@@ -206,7 +206,7 @@ const ApprovalTable = () => {
           </div>
           <div className='flex w-full justify-center'>
             <div>
-                <img src={popUrl} alt="" width={300} className='my-10'/> 
+                <img src={popUrl} alt="" width={500} className='my-10'/> 
             </div>
           </div>
 

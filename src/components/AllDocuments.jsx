@@ -17,7 +17,7 @@ const AllDocuments = () => {
     const [isAlertApprove, setIsAlertApprove] = useState(false)
     const [isStringApprove, setIsStringApprove] = useState()
     const [isLoading, setIsLoading] = useState(true);
-
+    const [popUrl, setPopUrl] = useState([]);
     useEffect(() => {
 
     async function getTest(){
@@ -36,6 +36,7 @@ const AllDocuments = () => {
         setTitle((prev) => [...prev, doc.data().title])
         setDescription((prev) => [...prev, doc.data().description])
         setDate((prev) => [...prev, doc.data().date])
+        setPopUrl((prev) => [...prev,doc.data().url])
     })
 
     setIsLoading(false)
@@ -58,7 +59,6 @@ const AllDocuments = () => {
     const [popDateDoc, setPopDateDoc] = useState();
     const [popCreatorDoc, setPopCreatorDoc] = useState();
     const [popCoverateDoc, setPopCoverageDoc] = useState();
-    const [popUrl, setPopUrl] = useState();
     const [popContributionDoc, setPopContributionDoc] = useState();
     const [isPopLoading, setIsPopLoading] = useState(true);
 
@@ -81,7 +81,6 @@ const AllDocuments = () => {
       setPopDescriptionDoc(docRef.data().description)
       setPopDateDoc(docRef.data().date)
       setPopCreatorDoc(docRef.data().creator)
-      setPopUrl(docRef.data().url)
       setPopCoverageDoc(docRef.data().coverage)
       setPopContributionDoc(docRef.data().contribution)
       }else{
@@ -141,7 +140,7 @@ const AllDocuments = () => {
 
         <div className={`bg-[#CCB39C] shadow-xl  ${isOpen && "hidden"} rounded-xl w-full  px-10`}>
           <div className='flex justify-between pt-6'>
-           <h1 className="mb-2 text-3xl font-bold tracking-tight text-black ">Edit Document</h1>
+           <h1 className="mb-2 text-3xl font-bold tracking-tight text-black ">Document</h1>
            <button 
            onClick={() => handleCloseFullInfo()}
            className="w-40 text-white font-bold bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Close</button>
@@ -193,7 +192,7 @@ const AllDocuments = () => {
               <th scope="col" className="px-6 py-4">Title</th>
               <th scope="col" className="px-6 py-4">Description</th>
               <th scope="col" className="px-6 py-4">Date</th>
-              <th scope="col" className="px-6 py-6">Edit</th>
+              <th scope="col" className="px-6 py-6">Download</th>
             </tr>
           </thead>
           <tbody>
@@ -209,10 +208,17 @@ const AllDocuments = () => {
               <td className="whitespace-nowrap px-6 py-4">{date[index]}</td>
               <td className="whitespace-nowrap px-6 py-4">
                 <button
-                onClick={() => popUpCard(docId)} 
                 className="w-32 bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded"
                 >
-                EDIT
+
+                <a
+                // onClick={() => popUpCard(docId)} 
+                href={popUrl[index]}
+                target="_blank"
+                rel="noreferrer"
+                >
+                Download
+                </a>
                 </button>
               </td>
             </tr>
