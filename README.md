@@ -1,5 +1,5 @@
 # Rover Car Club of Australia - Technology Innovation Project 2023
-### This project is a prototype web application for RCCA. 
+### This project is a prototype web application for RCCA by Group 2.
 ### Key features of the web application are listed below: 
 - Upload of rover related records (eg. Journal Articles, Photograph Commercials, etc...).
 - Search bar category filter for related records in database.
