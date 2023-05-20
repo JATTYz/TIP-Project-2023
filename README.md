@@ -8,14 +8,14 @@
 
 ## Technologies Used
 - Front-end: Astro, React.js, Tailwind & Mantine.
-- Backend: Google Firebase/FireStore
+- Backend: Google Firebase/Firestore.
 
 ## Start this project on local host!
 - Download zip file from main and extract files. 
 - Open these files on chosen IDE (we recommend Visual Studio) or directly from terminal/cmd.
 - Change directory to the file and run the following commands:
-- 'npm i' - for installation of modules 
-- 'npm run dev' -  to start web application on local host
+- 'npm i' - for installation of modules.
+- 'npm run dev' -  to start web application on local host.
 - Explore the application!
 
 *Note for admin access the email='test@gmail.com' and password='123456ABC'.*
