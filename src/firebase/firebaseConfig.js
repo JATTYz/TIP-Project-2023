@@ -4,14 +4,15 @@ import { getAuth } from "firebase/auth"
 import { getStorage } from "firebase/storage"
 
 //FIREBASE SETUP #JATURON's Firebase REPO.
+//Please add your firebase database. This database configuration will connect to this project
 const firebaseConfig = {
-  apiKey: "AIzaSyAdooBLHTynFb28DOFthFJUXRDHUsH316Q",
-  authDomain: "g2-tip-2023.firebaseapp.com",
-  projectId: "g2-tip-2023",
-  storageBucket: "g2-tip-2023.appspot.com",
-  messagingSenderId: "201570838587",
-  appId: "1:201570838587:web:39d3535843f09aebe8541e",
-  measurementId: "G-DF3XQ9QFHW"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: ""
 };
 
 // Initialize Firebase
